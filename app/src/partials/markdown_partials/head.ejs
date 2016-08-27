@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%=typeof title == 'undefined' ? 'Influence' : title%></title>
+	 <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="css/markdown.css">
+</head>
+	<body>
+		<nav class="navbar navbar-default navbar-top">
+			<div class="container-fluid">
+			    <div class="navbar-header">
+				    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				    </button>
+				    <a class="navbar-brand" href="#">
+				    	<img id="logo" src="images/inf.svg" alt="Influence">
+				    </a>
+			    </div>
+			    <div class="collapse navbar-collapse" id="myNavbar">
+				    <ul class="nav navbar-nav create_dropdown">
+				        <li class="dropdown">
+				         	<a class="dropdown-toggle create_document_text" data-toggle="dropdown" href="#"> CREATE New Document <span class="caret"></span></a>
+					        <ul class="dropdown-menu">
+					            <li><a href="#">Markdown ( .markdown, .md )</a></li>
+					            <li><a href="#">WYSIWYG editor</a></li>
+					        </ul>
+				        </li>
+				    </ul>
+				   <!--  <ul class="nav navbar-nav navbar-right">
+				        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				    </ul> -->
+				    <ul class="nav navbar-nav navbar-right">
+				        <li class="dropdown">
+				         	<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-ellipsis-h fa-lg" aria-hidden="true"></i>&nbsp; Influence</a>
+					        <ul class="dropdown-menu">
+					            <li><a href="#"> <i class="fa fa-user" aria-hidden="true"></i> &nbsp;John Doe</a></li>
+					            <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i></i> &nbsp;Account settings</a></li>
+					            <li><a href="#"><i class="fa fa-power-off" aria-hidden="true"></i> &nbsp;Logout</a></li>
+					        </ul>
+				        </li>
+				    </ul>
+			    </div>
+			</div>
+		</nav>

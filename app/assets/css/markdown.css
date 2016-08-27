@@ -1,0 +1,40 @@
+body{
+	/*padding-top: 50px;*/
+}
+footer{
+	padding: 10px 30px;
+	color: #A4A4A4;
+	border-top: 1px dashed #E6E6E6;
+	height: 5vh;
+}
+.create_dropdown{
+	background-color: #4F4F4F !important;
+	color: #F7F7F7 !important;
+	border-radius: 0px 0px 10px 10px;
+}
+.create_document_text{
+	color: #fff !important;
+}
+.create_document_text:hover, .create_document_text:active{
+	background-color: #F7F7F7 !important;
+	color: black !important;
+}
+#logo{
+	height: 40px;
+	position: relative;
+	top: -10px;
+	left: -10px;
+}
+.twins{
+	height: 90vh;
+}
+#editor{
+	width: 100%;
+	min-height: 90vh;
+	max-height: 90vh;
+	resize: none;
+	padding: 10px;
+}
+.preview{
+	padding: 10px;
+}

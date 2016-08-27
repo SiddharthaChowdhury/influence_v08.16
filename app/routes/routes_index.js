@@ -10,7 +10,11 @@ var router = express.Router();
 
 // GET home page.
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  	res.render('index', { title: 'Influence' });
+});
+
+router.get('/markdown', function(req, res) {
+  	res.render('markdown', { title: 'markdown | Influence' });
 });
 
 module.exports = router;
