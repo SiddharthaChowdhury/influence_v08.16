@@ -34,7 +34,10 @@ footer{
 	max-height: 90vh;
 	resize: none;
 	padding: 10px;
+	border:1px dotted #c0c;
 }
 .preview{
 	padding: 10px;
+	border-left:1px dotted #c0c;
+	border-right:1px dotted #c0c;
 }
