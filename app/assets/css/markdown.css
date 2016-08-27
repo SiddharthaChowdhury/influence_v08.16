@@ -7,6 +7,10 @@ footer{
 	border-top: 1px dashed #E6E6E6;
 	height: 5vh;
 }
+a{
+	text-decoration: none !important;
+	color: #000;
+}
 .create_dropdown{
 	background-color: #4F4F4F !important;
 	color: #F7F7F7 !important;
@@ -14,6 +18,7 @@ footer{
 }
 .create_document_text{
 	color: #fff !important;
+	padding: 7px 11px !important;
 }
 .create_document_text:hover, .create_document_text:active{
 	background-color: #F7F7F7 !important;
@@ -34,10 +39,10 @@ footer{
 	max-height: 90vh;
 	resize: none;
 	padding: 10px;
-	border:1px dotted #c0c;
+	border:1px dotted #c0c0c0;
 }
 .preview{
 	padding: 10px;
-	border-left:1px dotted #c0c;
-	border-right:1px dotted #c0c;
+	border-left:1px dotted #c0c0c0;
+	border-right:1px dotted #c0c0c0;
 }
