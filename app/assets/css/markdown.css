@@ -11,6 +11,11 @@ a{
 	text-decoration: none !important;
 	color: #000;
 }
+.circle-button{
+	padding: 3px 6px;
+	border:1px solid #c0c0c0;
+	border-radius: 50%;
+}
 .create_dropdown{
 	background-color: #4F4F4F !important;
 	color: #F7F7F7 !important;

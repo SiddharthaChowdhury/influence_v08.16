@@ -57,5 +57,17 @@ $(function(){
 			$(this).find('span').addClass('fa-toggle-off');
 		}
 	})
+
+	$('.basic_collapse_btn').click(function(e){
+		e.preventDefault();
+		var self = $('#basic_collapse_btn')
+		if( $('#collapse1').hasClass('in') ){
+			console.log(self.closest('span'))
+			self.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+		}
+		else{
+			self.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+		}
+	})
 		
 });

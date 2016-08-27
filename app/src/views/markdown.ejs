@@ -3,14 +3,56 @@
 	<div class="container-fluid">
 		<div class="row twins">
 			<div class="col-md-6 ">
-				<div class="">
+
+				<!-- Accordian start -->
+				<div class="panel-group" id="accordion">
+				    <div class="panel panel-default">
+					    <div class="panel-heading">
+					        <h4 class="panel-title">
+					         	<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="basic_collapse_btn">Basic documentation details</a>
+					         	<a data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="basic_collapse_btn pull-right"><span id="basic_collapse_btn" class="fa fa-chevron-down fa-lg" aria-hidden="true"></span></a>
+					        </h4>
+					    </div>
+				      <div id="collapse1" class="panel-collapse collapse in">
+				        <div class="panel-body">
+				        	<div class="row">
+								<div class="form-group col-md-12">
+								  	<label for="title">Title:</label>
+								  	<input type="text" class="form-control" id="title" placeholder="Untitled.md">
+								</div>
+
+								<div class="form-group col-md-8">
+									<label for="dir">Select directory:</label>
+									<select class="form-control" id="dir">
+									    <option>Directory 1</option>
+									    <option>Directory 2</option>
+									    <option>Directory 3</option>
+									    <option>Directory 4</option>
+									</select>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="dir"> &nbsp;</label>
+									<button class="form-control btn btn-default"><i class="fa fa-folder-open" aria-hidden="true"></i>&nbsp; New directory</button>
+								</div>
+							</div>
+				        </div>
+				      </div>
+				    </div>
+			  	</div>
+				<!-- Accordian end  -->
+				<div>
 					<span class="pull-left">
 						<a href="#" class="toggle_autosave" data-status="off"><span class="fa fa-toggle-off fa-lg" aria-hidden="true"></span> &nbsp;<small>Turn ON auto-save after every 4 mins</small></a>
 					</span> 
 					<span class="pull-right"> 
-						<a href="#" class="btn btn-default"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp; Save</a>
-						<a href="#" class="btn btn-default"><i class="fa fa-eraser" aria-hidden="true"></i>&nbsp; Clear</a>
-						<a href="#" class="btn btn-default"><i class="fa fa-times" aria-hidden="true"></i>&nbsp; Delete</a>
+						<label class="dropdown">
+						    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-ellipsis-h fa-2x" aria-hidden="true"></i></a>
+						    <ul class="dropdown-menu">
+						      	<li><a href="#"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp; Save (ctrl + s)</a></li>
+						    	<li><a href="#"><i class="fa fa-eraser" aria-hidden="true"></i>&nbsp; Clear</a></li>
+							    <li><a href="#"><i class="fa fa-times" aria-hidden="true"></i>&nbsp; Delete</a></li>
+						    </ul>
+						</label>
 					</span>
 				</div>
 				<textarea id="editor" placeholder="Start documenting.."></textarea>
