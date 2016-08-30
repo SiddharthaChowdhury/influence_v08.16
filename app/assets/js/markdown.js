@@ -14,17 +14,26 @@ $(function(){
 	        switch (String.fromCharCode(event.which).toLowerCase()) {
 	        case 's':                              	// DETECT <ctrl> + S
 	            event.preventDefault();
-	            alert('ctrl + s');
+	            save_document();
 	            break;
-	        // case 'k': 								// DETECT <ctrl> + K
-	        //     event.preventDefault();
-	        //     getSelectionText();
-	        //     break;
-	        // case 'g':
-	        //     event.preventDefault();
-	        //     alert('ctrl-g');
-	        //     break;
 	        }
+	    }
+	});
+
+	$('#editor').keydown(function (e) {
+	    var keyCode = e.keyCode || e.which;
+
+	    if (keyCode === 9) {
+	        e.preventDefault();
+	        var start = this.selectionStart;
+	        var end = this.selectionEnd;
+
+	        // set textarea value to: text before caret + tab + text after caret
+	        spaces = "    ";
+	        this.value = this.value.substring(0, start) + spaces + this.value.substring(end);
+
+	        // put caret at right position again
+	        this.selectionStart = this.selectionEnd = start + spaces.length;
 	    }
 	});
 
@@ -68,6 +77,23 @@ $(function(){
 		else{
 			self.removeClass('fa-chevron-up').addClass('fa-chevron-down');
 		}
-	})
+	});
+
+	$('.jq_save_doc').click(function(e){
+		e.preventDefault();
+		save_document();
+	});
+
+	$('.jq_clear_txt').click(function(e){
+		e.preventDefault();
+		if(confirm("Sure you want to cleanup the editor?")){
+			$('#editor').val("");
+			$('.preview').html("");
+		}
+	});
+
+	function save_document(){
+		alert("Document to be saved");
+	}
 		
 });

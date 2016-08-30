@@ -1,18 +1,32 @@
-body{
-	padding-top: 20%;
-	font-family: "Courier New", Courier, monospace;
-	background: #EC7063;
-	color: #fff;
+.btn, input{
+	border-radius: 1px !important;
 }
-h1, div{
-	text-align: center;
+.navbar-brand{
+	padding-top: 5px !important;
 }
-.errors{
-	font-size: 100px;
+.too-small{
+	font-size:x-small;
 }
-input{
-	color: black;
+.divider-signup{
+	width: 80%;
+	height: 1px;
+	background-color: #C0C0C0;
+	margin: 15px;
 }
-button{
-	color: #EC7063
+.signup-tab{
+	margin-left: 20px;
+}
+.signup-heading{
+	margin-left: 15px;
+}
+.signup-button{
+	border: 2px solid #C0C0C0 !important;
+}
+a{
+	text-decoration: none !important;
+	color: #696969;
+}
+a:hover, a:active{
+	text-decoration: none !important;
+	color: #353535 !important;
 }

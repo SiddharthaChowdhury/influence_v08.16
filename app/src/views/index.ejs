@@ -1,12 +1,53 @@
 <% include ../partials/index_partials/head %>
 
-	<div> 
-		<form method="post" action="/users/create">
-			<input type="email" placeholder="email" name="email"/>
-			<input type="text" placeholder="phone" name="phone"/>
-			<input type="password" placeholder="********" name="passwd"/>
-			<button type="submit">Submit</button>
-		</form>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-6">
+					<form>
+						<div class="signup-heading">
+							<h3>Sign up</h3>
+							<small>Well this is all we need to get started.</small>
+						</div>
+						<div class="divider-signup"></div>
+						<table class="signup-tab"> 
+							<tr>
+							    <td>We need your&nbsp;</td>
+							    <td>
+							    	<div class="form-group text-center">
+										<label>Email</label>
+				                        <input type="text" class="form-control" name="username" placeholder="Email">
+				                    </div>
+							    </td>
+							    <td>&nbsp; FOR identification</td>
+							</tr>
+							<tr>
+							    <td>You will need a&nbsp;</td>
+							    <td>
+							    	<div class="form-group text-center">
+										<label>Password</label>
+				                        <input type="text" class="form-control" name="password" placeholder="Password">
+				                    </div>
+							    </td>
+							    <td>&nbsp; TO sign in</td>
+							</tr>
+						</table>
+						<div class="divider-signup"></div>
+						<table>
+							<tr>
+								<td class="col-md-7">
+									<small class="too-small">By clicking the Sign Up button, you agree to our Terms and conditions also the Policies.</small>
+								</td>
+								<td>
+									<button class="btn btn-default signup-button">Sign up</button>
+								</td>
+							</tr>
+						</table>
+						<div class="divider-signup"></div>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
 
 <% include ../partials/index_partials/foot %>
