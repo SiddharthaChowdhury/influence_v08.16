@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="col-md-6">
-					<form>
+					<form method="post" action="/users/create">
 						<div class="signup-heading">
 							<h3>Sign up</h3>
 							<small>Well this is all we need to get started.</small>
@@ -16,7 +16,7 @@
 							    <td>
 							    	<div class="form-group text-center">
 										<label>Email</label>
-				                        <input type="text" class="form-control" name="username" placeholder="Email">
+				                        <input type="text" class="form-control" name="email" placeholder="Email">
 				                    </div>
 							    </td>
 							    <td>&nbsp; FOR identification</td>
@@ -26,7 +26,7 @@
 							    <td>
 							    	<div class="form-group text-center">
 										<label>Password</label>
-				                        <input type="text" class="form-control" name="password" placeholder="Password">
+				                        <input type="password" class="form-control" name="password" placeholder="Password">
 				                    </div>
 							    </td>
 							    <td>&nbsp; TO sign in</td>
@@ -39,11 +39,18 @@
 									<small class="too-small">By clicking the Sign Up button, you agree to our Terms and conditions also the Policies.</small>
 								</td>
 								<td>
-									<button class="btn btn-default signup-button">Sign up</button>
+									<button type="submit" class="btn btn-default signup-button">Sign up</button>
 								</td>
 							</tr>
 						</table>
 						<div class="divider-signup"></div>
+						<% if( typeof error == 'undefined' && typeof success == 'undefined'  ) {%>
+
+						<%} else { %>
+							<label class="mike" >
+							<%= typeof error != 'undefined' ? error : ( typeof success != 'undefined' ? success : "") %>
+							</label>
+						<% } %>
 					</form>
 				</div>
 			</div>

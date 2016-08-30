@@ -1,6 +1,9 @@
 .btn, input{
 	border-radius: 1px !important;
 }
+.hide-this{
+	display:none;
+}
 .navbar-brand{
 	padding-top: 5px !important;
 }
@@ -29,4 +32,10 @@ a{
 a:hover, a:active{
 	text-decoration: none !important;
 	color: #353535 !important;
+}
+
+.mike{
+	padding:15px 22px;
+	border:2px dotted black;
+	margin-left: 15px;
 }

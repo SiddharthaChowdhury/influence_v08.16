@@ -4,6 +4,8 @@ var express     = require('express'),
     conn        = require('./config/db_conn'),
     path        = require('path'),
     bodyParser  = require('body-parser'),
+    session     = require('express-session'),
+    flash       = require('express-flash'),
     app         = express();
 
 						// DECLARE ROUTES
@@ -18,6 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));            // Static pu
 
 app.use(bodyParser.json({limit: '2mb'}));                           // 2mb file upload limit
 app.use(bodyParser.urlencoded({limit: '2mb', extended: true}));     // 2mb file upload limit
+app.use(session({ secret: 'bon_jovi'}));
+app.use(flash());
 
 
                         // USE ROUTES

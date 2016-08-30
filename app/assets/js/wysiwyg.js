@@ -13,7 +13,6 @@ $(document).ready(function(){
 				saveFile(file[0], editor, welEditable);
 	        },
 	        onChange : function($editable, sHtml){
-	        	// console.log($editable);
 	        	$('.preview').html($editable)
 	        },
     	}          					 

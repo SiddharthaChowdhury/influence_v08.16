@@ -7,6 +7,7 @@ var User = require('../controllers/userController');
 
 											// user registration
 router.post('/create', function(req, res){
+	// console.log(req.body);
 	User.create_newUser(req, res);
 });
 

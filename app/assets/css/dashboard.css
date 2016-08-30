@@ -1,0 +1,66 @@
+/* dashboard.css */
+body{
+	/*padding-top: 50px;*/
+}
+footer{
+	margin-top: 50px;
+	padding: 10px 30px;
+	color: #A4A4A4;
+	border-top: 1px dashed #E6E6E6;
+	height: 5vh;
+}
+a{
+	text-decoration: none !important;
+	color: #7C7C7C;
+}
+.circle-button{
+	padding: 3px 6px;
+	border:1px solid #c0c0c0;
+	border-radius: 50%;
+}
+
+/*------- Create new doc button start -------- */
+
+.create_dropdown{
+	background-color: #4F4F4F !important;
+	color: #F7F7F7 !important;
+	border-radius: 0px 0px 10px 10px;
+}
+.create_document_text{
+	color: #fff !important;
+	padding: 7px 11px !important;
+}
+.create_document_text:hover, .create_document_text:active{
+	background-color: #F7F7F7 !important;
+	color: black !important;
+}
+/*------- Create new doc button end -------- */
+
+
+#logo{
+	height: 40px;
+	position: relative;
+	top: -10px;
+	left: -10px;
+}
+/*-------------------------------------------------*/
+/*------------------ DASHBOARD --------------------*/
+.progress-bar-info{
+	background-color: #7C7C7C;
+	color: #fff;
+}
+
+.dashboard-primary-menu li{
+	display: inline-block;
+	margin:6px 1px;
+	padding:7px 12px;
+	color: #353535;
+	background-color: #E0E0E0;
+}
+.h3{
+	font-weight: 500;
+	font-size: 20px;
+}
+.view-all{
+	font-size: 13px;
+}

@@ -1,7 +1,7 @@
 
 var db_config = {
 	connection : 'mongo',
-	db_name : "mydb"
+	db_name : "docbay"
 }
 
 //------------------ RESTRICTED [start]---------------------------
