@@ -1,0 +1,55 @@
+/* wysiwyg.css */
+body{
+	/*padding-top: 50px;*/
+}
+footer{
+	padding: 10px 30px;
+	color: #A4A4A4;
+	border-top: 1px dashed #E6E6E6;
+	height: 5vh;
+}
+a{
+	text-decoration: none !important;
+	color: #000;
+}
+.circle-button{
+	padding: 3px 6px;
+	border:1px solid #c0c0c0;
+	border-radius: 50%;
+}
+
+/*------- Create new doc button start -------- */
+
+.create_dropdown{
+	background-color: #4F4F4F !important;
+	color: #F7F7F7 !important;
+	border-radius: 0px 0px 10px 10px;
+}
+.create_document_text{
+	color: #fff !important;
+	padding: 7px 11px !important;
+}
+.create_document_text:hover, .create_document_text:active{
+	background-color: #F7F7F7 !important;
+	color: black !important;
+}
+/*------- Create new doc button end -------- */
+
+
+#logo{
+	height: 40px;
+	position: relative;
+	top: -10px;
+	left: -10px;
+}
+.twins{
+	height: 90vh;
+}
+.editor{
+	margin-top: 50px !important;
+}
+.preview{
+	padding: 10px;
+	border-left:1px dotted #c0c0c0;
+	border-right:1px dotted #c0c0c0;
+}

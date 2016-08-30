@@ -17,4 +17,8 @@ router.get('/markdown', function(req, res) {
   	res.render('markdown', { title: 'markdown | Influence' });
 });
 
+router.get('/wysiwyg', function(req, res) {
+  	res.render('wysiwyg', { title: 'wysiwyg | Influence' });
+});
+
 module.exports = router;

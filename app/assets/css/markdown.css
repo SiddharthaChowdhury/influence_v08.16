@@ -16,6 +16,9 @@ a{
 	border:1px solid #c0c0c0;
 	border-radius: 50%;
 }
+
+/*------- Create new doc button start -------- */
+
 .create_dropdown{
 	background-color: #4F4F4F !important;
 	color: #F7F7F7 !important;
@@ -29,6 +32,9 @@ a{
 	background-color: #F7F7F7 !important;
 	color: black !important;
 }
+/*------- Create new doc button end -------- */
+
+
 #logo{
 	height: 40px;
 	position: relative;
