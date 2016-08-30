@@ -11,8 +11,12 @@ $(document).ready(function(){
         	onImageUpload : function(file, editor, welEditable) {
         		console.log('initiated')
 				saveFile(file[0], editor, welEditable);
-	        }
-    	}            					 
+	        },
+	        onChange : function($editable, sHtml){
+	        	// console.log($editable);
+	        	$('.preview').html($editable)
+	        },
+    	}          					 
 	});
 
 	$('.toggle_autosave').click(function(e){
@@ -30,5 +34,7 @@ $(document).ready(function(){
 			$(this).find('span').removeClass('fa-toggle-on');
 			$(this).find('span').addClass('fa-toggle-off');
 		}
-	})
+	});
+
+
 });
