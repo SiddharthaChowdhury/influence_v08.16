@@ -56,6 +56,26 @@ var spaceController = {
 
 	check_code: function(req, res){
 		console.log(req.body);
+		if(!req.body.code){
+			res.status(404);
+			res.send("Code not found!");
+			return;
+		}
+		else{
+			Space.find({space_code: req.body.code}, function(err, space){
+				if(err) throw err;
+				if(space.length == 0){
+					res.status(200);
+					res.send("Not found");
+					return;
+				}
+				else{
+					res.status(500);
+					res.send("found");
+					return;
+				}
+			});
+		}
 	},
 }
 

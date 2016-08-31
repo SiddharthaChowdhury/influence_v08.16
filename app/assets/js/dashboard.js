@@ -26,9 +26,16 @@ $(function(){
 			url: "/space/code/check",
 			data: { code: $('#space_code').val() }
 		})
-		  .done(function( msg ) {
-		    alert( "Data Saved: " + msg );
-		  });
+		  	.done(function( msg, textStatus, jqXHR ) {
+		  		if( jqXHR.status == 200 ){
+		  			$('.code_msg').attr('color','green');
+		  			$('.code_msg').html('&nbsp;<i class="fa fa-check" aria-hidden="true"></i> CODE is unique');
+		    		console.log(jqXHR.status);
+		  		}
+		  		else{
+		  			$('.code_msg').html('&nbsp;<i class="fa fa-times" aria-hidden="true"></i> CODE is available');
+		  		}
+		  	});
 	}
 
 	if( $('#space_content').length == 1 ){	
