@@ -1,9 +1,13 @@
 <% include ../partials/dashboard_partials/head %>
 	<div class="container">
-		<h2>Create new space</h2>
+		
 		<div class="row" id="space_content">
 			<form action="/space/create" method="post">
 				<div class="col-md-6">
+				<% if(typeof error != 'undefined')  {%>
+					<font color="red"><%= error %></font>
+				<% } %>
+				<% if(typeof success == 'undefined')  {%>
 					<div class="row">
 						<div class="form-group">
 							<label for="space_name">Space name:</label>
@@ -21,8 +25,11 @@
 							<button class=" btn btn-default pull-right"> Create space </button>
 						</div>
 					</div>
-					
-					
+				<% } else {%>
+					<div class="row text-center">
+						<div class="mike"> <%= success %> </div>
+					</div>
+				<% } %>
 					<div class="col-md-12">
 						<div class="h3"><label>Why is "Space" important ? </label></div>
 						<hr>

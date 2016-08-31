@@ -32,6 +32,12 @@ router.get('/dashboard', function(req, res) {
 });
 
 router.get('/space', function(req, res) {
-  	res.render('space', { title: 'space | Dockety' });
+	var res_obj = { 
+		title: 'space | Dockety', 
+		error : req.flash('error')[0] || undefined, 
+		success: req.flash('success')[0] || undefined
+	};
+	console.log(res_obj);
+  	res.render('space', res_obj);
 });
 module.exports = router;

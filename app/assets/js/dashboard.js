@@ -43,6 +43,7 @@ $(function(){
 		$('#space_code').keyup(function(e){
 			e.preventDefault();
 			if($(this).val().length < 5){
+				$('.code_msg').attr('color','red');
 				$('.code_msg').text("Add atleast "+ (5 - parseInt($(this).val().length)) +" more letters")
 			}
 			else{
