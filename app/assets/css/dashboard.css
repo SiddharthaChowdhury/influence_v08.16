@@ -21,9 +21,9 @@ a:hover{
 	border:1px solid #c0c0c0;
 	border-radius: 50%;
 }
-.btn {
+.btn, input, textarea {
 	border-radius: 1px !important;
-	border:1px solid #353535;
+	border:1px solid #c0c0c0;
 }
 
 /*------- Create new doc button start -------- */
@@ -74,3 +74,8 @@ a:hover{
 
 /*-------------------------------------------------*/
 /*------------------ SPACE --------------------*/
+
+#space_code{
+	padding: 6px;
+	width: 30%;
+}

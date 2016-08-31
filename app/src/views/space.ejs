@@ -7,20 +7,23 @@
 					<div class="col-md-12">
 						<div class="form-group">
 							<label for="space_name">Space name:</label>
-							<input type="text" class="form-control" id="space_name" placeholder="{ Department | Organisation }">
+							<input type="text" class="form-control" id="space_name" name="space_name" placeholder="{ Department | Organisation }">
 						</div>
 						<div class="form-group">
 							<label for="spae_desc">Space description:</label>
-							<textarea class="form-control" rows="3" id="spae_desc" placeholder="This space is about ~ "></textarea>
+							<textarea class="form-control" rows="3" id="spae_desc" name="space_description" placeholder="This space is about ~ "></textarea>
 						</div>
 						<div class="form-group">
-							<button class="btn btn-default pull-right"> Create space </button>
+							<label for="spae_desc">CODE:</label>
+							<input type="text" class="" id="space_code" name="space_code" placeholder=" UNIQ-CODE ">
+							<button class=" btn btn-default pull-right"> Create space </button>
 						</div>
 					</div>
 					
 					<hr>
 					<div class="col-md-12">
-						<div class="h3"><label>What is this SPACE? </label> Why is it important?</div>
+						<div class="h3"><label>Why is "Space" important ? </label></div>
+						<hr>
 						<p>
 							<b>If you are an organisation</b>, then <b>Space</b> is first step (or parent) which you need
 							to create to keep everything organized. Consider it is a virtual directory within which you create <b>
@@ -33,8 +36,10 @@
 						</p>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<p class="text-center"><img src="images/hierarchy.svg"></p>
+				<div class="col-md-6 text-center">
+					<h3>What is "Space" ?</h3>
+					<hr>
+					<p><img src="images/hierarchy.svg" ondragstart="return false;"></p>
 				</div>
 			</form>
 		</div>

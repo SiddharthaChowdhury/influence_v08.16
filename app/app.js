@@ -10,7 +10,8 @@ var express     = require('express'),
 
 						// DECLARE ROUTES
 var routes = require('./routes/routes_index'),
-    users = require('./routes/routes_users');
+    users = require('./routes/routes_users'),
+    space = require('./routes/routes_space');
 
 app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs');
@@ -27,7 +28,7 @@ app.use(flash());
                         // USE ROUTES
 app.use('/', routes);
 app.use('/users', users);
-
+app.use('/space', space);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
