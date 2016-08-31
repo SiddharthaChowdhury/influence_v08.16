@@ -14,7 +14,9 @@ var spaceSchemaPrimary = new Schema({
 	space_desc: {
 		type: String
 	},
-
+	admin_email: {
+		type: String
+	},
 	space_type:{
 		type: String,
         enum: ['public', 'private']

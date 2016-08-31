@@ -11,4 +11,8 @@ router.post('/create', function(req, res){
 	User.create_newUser(req, res);
 });
 
+router.post('/login', function(req, res){
+	User.login(req, res);
+});
+
 module.exports = router;
