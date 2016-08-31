@@ -1,1 +1,4 @@
 // dashboard.js
+$(function(){
+
+})

@@ -30,4 +30,8 @@ router.get('/wysiwyg', function(req, res) {
 router.get('/dashboard', function(req, res) {
   	res.render('dashboard', { title: 'dashboard | Dockety' });
 });
+
+router.get('/space', function(req, res) {
+  	res.render('space', { title: 'space | Dockety' });
+});
 module.exports = router;

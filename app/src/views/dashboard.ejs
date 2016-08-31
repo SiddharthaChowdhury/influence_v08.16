@@ -7,7 +7,7 @@
 					<h1 class="text-center">John Doe</h1>
 					<h5>Profile completion : </h5>
 					<div class="progress">
-					  <div class="progress-bar-info text-center" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
+					  <div class="progress-bar-info text-center progress-bar-striped" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%">
 					    70%
 					  </div>
 					</div>
@@ -15,11 +15,11 @@
 			</div>
 			<div class="col-md-8 dashboard-primary-menu-container">
 				<ul class="dashboard-primary-menu pull-right">
-					<li>Space</li>
-					<li>Team</li>
-					<li>People</li>
-					<li>Permissions</li>
-					<li>How Dockety works?</li>
+					<li><a href="#"> Space</a></li>
+					<li><a href="#"> Team</a></li>
+					<li><a href="#"> People</a></li>
+					<li><a href="#"> Permissions</a></li>
+					<li><a href="#"> How Dockety works?</a></li>
 				</ul>
 			</div>
 		</div>
@@ -35,12 +35,13 @@
 				</div>
 			</div>
 			<div class="col-md-5">
-				<div class="h3">Spaces <small>(1)</small><a href="#" class="view-all"> View all</a></div>
+				<div class="h3">Spaces <small>(2)</small></div>
 				<hr>
+				<input type="hidden" name="spaces" id="spaces_hidden" value="['Personal', 'Global']">
+				<input type="hidden" name="spaces" id="counts_hidden" value="[2,9]">
 				<div class="col-md-12">
-					<div class="col-md-4">Akademe</div>
-					<div class="col-md-4">System integrator and backdend developer</div>
-					<div class="col-md-4">Development</div>
+					
+				
 				</div>
 			</div>
 		</div>
