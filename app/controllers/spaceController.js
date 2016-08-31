@@ -52,23 +52,10 @@ var spaceController = {
 
 		    return text;
 		}
+	},
 
-		// User.find({ email: newUser.email }, function(err, user) {
-		// 	if (err) throw err;
-		// 	if(user.length > 0){
-		// 	  	req.flash('error', 'User already exists.');
- 	// 		  	return res.redirect('/');
-		// 	}
-		// 	else
-		// 	{
-		// 		newUser.save(function(err) {
-		// 			if (err) throw err;
-		// 			console.log('User saved successfully!');
-		// 			req.flash('success', 'Registration was successfully completed. Please sign in.');
- 	// 		  		return res.redirect('/');
-		// 		});
-		// 	}
-		// });
+	check_code: function(req, res){
+		console.log(req.body);
 	},
 }
 

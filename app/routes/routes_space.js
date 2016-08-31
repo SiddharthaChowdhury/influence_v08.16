@@ -10,4 +10,8 @@ router.post('/create', function(req, res){
 	Space.create_newSpace(req, res);
 });
 
+router.post('/code/check', function(req, res){
+	Space.check_code(req, res);
+});
+
 module.exports = router;
