@@ -4,25 +4,37 @@
 		<div class="row">
 			<form action="/space/create" method="post">
 				<div class="col-md-6">
-					<div class="form-group">
-						<label for="space_name">Space name:</label>
-						<input type="text" class="form-control" id="space_name" placeholder="{ Department | Organisation }">
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="space_name">Space name:</label>
+							<input type="text" class="form-control" id="space_name" placeholder="{ Department | Organisation }">
+						</div>
+						<div class="form-group">
+							<label for="spae_desc">Space description:</label>
+							<textarea class="form-control" rows="3" id="spae_desc" placeholder="This space is about ~ "></textarea>
+						</div>
+						<div class="form-group">
+							<button class="btn btn-default pull-right"> Create space </button>
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="spae_desc">Space description:</label>
-						<textarea class="form-control" rows="5" id="spae_desc" placeholder="This space is about ~ "></textarea>
+					
+					<hr>
+					<div class="col-md-12">
+						<div class="h3"><label>What is this SPACE? </label> Why is it important?</div>
+						<p>
+							<b>If you are an organisation</b>, then <b>Space</b> is first step (or parent) which you need
+							to create to keep everything organized. Consider it is a virtual directory within which you create <b>
+							Teams</b>. Where <b>Team</b> will contain <b>Members/Users</b> who are responsible for creating articles 
+							(private/public).
+							<br>
+							<b>For personal usage</b> you do not necessarily have to create any space. At the time of account creation,
+							we provide you with a personal space where you can document your work privately. Also you can publish your 
+							article/documentation globally, for the world to know about your work, <u>(and helping people with your knowledge)</u>.
+						</p>
 					</div>
-					<button class="btn btn-default pull-right"> Create space </button>
 				</div>
 				<div class="col-md-6">
-					<h4>What is "SPACE"?</h4>
-					<h5><label> > How is it important? </label></h5><hr>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+					<p class="text-center"><img src="images/hierarchy.svg"></p>
 				</div>
 			</form>
 		</div>
