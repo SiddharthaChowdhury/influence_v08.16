@@ -52,8 +52,20 @@ a:hover, a:active{
 	color: #353535 !important;
 }
 
-.mike{
-	padding:15px 22px;
-	border:2px dotted black;
-	margin-left: 15px;
+.mike-error{
+	width: 90%;
+	padding: 7px 12px;
+	background-color: #DF013A;
+	color: #fff;
+	margin-bottom: 10px;
+}
+.mike-success{
+	width: 90%;
+	padding: 7px 12px;
+	background-color: #04B431;
+	color: #fff;
+	margin-bottom: 10px;
+}
+#password {
+	letter-spacing: 5px;
 }

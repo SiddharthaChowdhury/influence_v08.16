@@ -9,10 +9,11 @@ var User = require('../controllers/userController');
 router.get('/', function(req, res) {
 	var res_obj = {
 		title: 'Dockety',
+		login_error: req.flash('login-error')[0] || undefined,
 		error: req.flash('error')[0] || undefined,
-		success: req.flash('success')[0] || undefined
+		success: req.flash('success')[0] || undefined,
+		forr: req.flash('forr')[0] || undefined
 	}
-	console.log(res_obj);
   	res.render('index', res_obj);
 });
 

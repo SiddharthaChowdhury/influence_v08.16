@@ -17,6 +17,7 @@ var userController = {
 		User.find({ email: newUser.email }, function(err, user) {
 			if (err) throw err;
 			if(user.length > 0){
+				// req.flash('forr', 'signup');
 			  	req.flash('error', 'User already exists.');
  			  	return res.redirect('/');
 			}
@@ -24,7 +25,7 @@ var userController = {
 			{
 				newUser.save(function(err) {
 					if (err) throw err;
-					console.log('User saved successfully!');
+					// req.flash('forr', 'signup');
 					req.flash('success', 'Registration was successfully completed. Please sign in.');
  			  		return res.redirect('/');
 				});
@@ -56,7 +57,9 @@ var userController = {
  				}
  			}
  			else{
- 				console.log("user not found");
+ 				// req.flash('forr', 'login');
+ 				req.flash('login-error', 'Login credentials mismatch!');
+ 			  	return res.redirect('/');
  			}
  		});
 	},
