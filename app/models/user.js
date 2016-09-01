@@ -21,6 +21,12 @@ var userSchemaPrimary = new Schema({
 	country:{
 		type: String
 	},
+	lat: { 
+		type: String
+	},
+	lng:{
+		type: String
+	},
 	formatted_address:{
 		type: String
 	},

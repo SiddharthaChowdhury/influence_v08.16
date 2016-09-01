@@ -26,6 +26,23 @@ a:hover{
 	border:1px solid #c0c0c0;
 }
 
+.hide-this{
+	display: none;
+}
+.mike-error{
+	width: 100%;
+	padding: 7px 12px;
+	background-color: #DF013A;
+	color: #fff;
+	margin-bottom: 10px;
+}
+.mike-success{
+	width: 100%;
+	padding: 7px 12px;
+	background-color: #04B431;
+	color: #fff;
+	margin-bottom: 10px;
+}
 /*------- Create new doc button start -------- */
 
 .create_dropdown{
@@ -78,4 +95,10 @@ a:hover{
 #space_code{
 	padding: 6px;
 	width: 30%;
+}
+
+/*-------------------------------------------------*/
+/*------------------ ACCOUNT --------------------*/
+#map-canvas{
+	height: 500px;
 }

@@ -50,13 +50,18 @@ router.get('/wysiwyg', function(req, res) {
 });
 
 router.get('/dashboard', function(req, res) {					// user dashboard
-	console.log(req.session.User);
+	// console.log(req.session.User);
   	res.render('dashboard', { title: 'dashboard | Dockety', user: req.session.User });
 });
 
-router.get('/account', function(req, res) {					// user dashboard
-	console.log(req.session.User);
-  	res.render('account', { title: 'account | Dockety', user: req.session.User });
+router.get('/profile', function(req, res) {	
+	var res_obj = { 
+		title: 'profile | Dockety', 
+		user: req.session.User, 
+		error: req.flash('error')[0] || undefined, 
+		success: req.flash('success')[0] || undefined
+	}
+  	res.render('profile', res_obj);
 });
 
 router.get('/space', function(req, res) {						// Space management page

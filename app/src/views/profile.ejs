@@ -1,0 +1,45 @@
+<% include ../partials/dashboard_partials/head %>
+	<div class="container" id="account_view">
+		<div class="row">
+			<form method="post" action="/users/profile/save">
+				<div class="col-md-6 col-md-offset-2">
+				<h2 class="text-center">Profile details</h2>
+				<% if( typeof success != 'undefined') {%>
+	            	<div class="mike-success"><%= success %></div>
+	            <% } %>
+				<% if( typeof error != 'undefined') {%>
+	            	<div class="mike-error"><%= error %></div>
+	            <% } %>
+				<div class="form-group col-md-12">
+				  	<label for="title">Name:</label>
+				  	<input type="text" class="form-control" name="name" placeholder="Your name" value="<%= user.name %>">
+				</div>
+				<div class="form-group col-md-12">
+				  	<label for="title">Display name:</label>
+				  	<input type="text" class="form-control" name="d_name" placeholder="Name you want to show others" value="<%= user.display_name %>">
+				</div>
+				<div class="form-group col-md-12">
+				  	<label for="title">Contact number:</label>
+				  	<input type="text" class="form-control" name="phone" placeholder="Phone number" value="<%= user.phone %>">
+				</div>
+				<div class="form-group col-md-12">
+				  	<label for="title">City you are from:</label>
+				  	<input type="text" class="form-control" id="autocomplete" placeholder="Your name" value="<%= user.formatted_address %>">
+				</div>
+				<div class="form-group">
+					<label for="comment">Let people know who you are:</label>
+					<textarea class="form-control" rows="5" name="description" id="comment"><%= user.description %></textarea>
+				</div>
+				<input type="hidden" name="lat" id="lat" value="<%= user.lat %>">
+				<input type="hidden" name="lng" id="lng" value="<%= user.lng %>">
+				<input type="hidden" name="city" id="city" value="<%= user.city %>">
+				<input type="hidden" name="country" id="country" value="<%= user.country %>">
+				<input type="hidden" name="address" id="address" value="<%= user.formatted_address %>">
+				<button class="btn btn-default pull-right" type="submit" >Save</button>
+			</div>
+			</form>
+		</div>
+		
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbgFepltqsSw8FxQauYO8pmWjAXjPKVuQ&libraries=places" ></script>
+	</div>
+<% include ../partials/dashboard_partials/foot %>

@@ -6,12 +6,9 @@ var User = require('../controllers/userController');
 
 // --------------------------------------------= Routes accessable ONLY after login };
 
-// router.use(function(req, res, next) {
-//   	if(req.session.isAuthenticated)
-//   		next();
-//   	else
-//   		return res.redirect('/');
-// });
+router.post('/profile/save', function(req, res){	// Code checking
+	User.save_account(req, res);
+});
 
 
 // --------------------------------------------=	ENDS
