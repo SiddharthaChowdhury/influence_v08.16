@@ -19,6 +19,22 @@ router.get('/', function(req, res) {
   	res.render('index', res_obj);
 });
 
+router.get('/logout', function(req, res){
+	req.session.destroy(function(err) {
+		console.log(req.session)
+     	return res.redirect('/');
+  	});
+});
+
+router.post('/create', function(req, res){		// user registration
+	// console.log(req.body);
+	User.create_newUser(req, res);
+});
+
+router.post('/login', function(req, res){		// user login
+	User.login(req, res);
+});
+
 // --------------------------------------------= Routes accessable after login };
 
 // router.use(function(req, res, next) {			// If user LOGGED in 

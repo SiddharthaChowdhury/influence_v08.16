@@ -13,14 +13,6 @@ var User = require('../controllers/userController');
 //   		return res.redirect('/');
 // });
 
-router.post('/create', function(req, res){		// user registration
-	// console.log(req.body);
-	User.create_newUser(req, res);
-});
-
-router.post('/login', function(req, res){		// user login
-	User.login(req, res);
-});
 
 // --------------------------------------------=	ENDS
 
