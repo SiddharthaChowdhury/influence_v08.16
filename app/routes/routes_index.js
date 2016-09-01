@@ -17,19 +17,18 @@ router.get('/', function(req, res) {
   	res.render('index', res_obj);
 });
 
-router.get('/logout', function(req, res){
+router.get('/logout', function(req, res){						// logout
 	req.session.destroy(function(err) {
-		console.log(req.session)
      	return res.redirect('/');
   	});
 });
 
-router.post('/create', function(req, res){		// user registration
+router.post('/create', function(req, res){						// user registration
 	// console.log(req.body);
 	User.create_newUser(req, res);
 });
 
-router.post('/login', function(req, res){		// user login
+router.post('/login', function(req, res){						// user login
 	User.login(req, res);
 });
 
@@ -51,7 +50,13 @@ router.get('/wysiwyg', function(req, res) {
 });
 
 router.get('/dashboard', function(req, res) {					// user dashboard
-  	res.render('dashboard', { title: 'dashboard | Dockety' });
+	console.log(req.session.User);
+  	res.render('dashboard', { title: 'dashboard | Dockety', user: req.session.User });
+});
+
+router.get('/account', function(req, res) {					// user dashboard
+	console.log(req.session.User);
+  	res.render('account', { title: 'account | Dockety', user: req.session.User });
 });
 
 router.get('/space', function(req, res) {						// Space management page

@@ -4,16 +4,25 @@ var Schema = mongoose.Schema;
 
 var userSchemaPrimary = new Schema({
 
-	team_code : {
+	description : {
 		type: String
 	},
-	team_name: {
+	display_name: {
 		type: String
 	},
 	email: { 
 		type: String, 
 		required: true, 
 		unique: true 
+	},
+	city: { 
+		type: String
+	},
+	country:{
+		type: String
+	},
+	formatted_address:{
+		type: String
 	},
 	name: { 
 		type: String
@@ -28,7 +37,8 @@ var userSchemaPrimary = new Schema({
 		type: String,
         enum: ['admin', 'subadmin' ,'writer', 'reader']
 	},
-
+	teams: [{type: Schema.ObjectId, ref: 'Team'}], //the name of the model is "Team"
+	spaces: [{type: Schema.ObjectId, ref: 'Space'}], //the name of the model is "Team"
 	updated_at: Date,
 	created_at: { 
 		type : Date, 

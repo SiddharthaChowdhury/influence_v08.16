@@ -55,9 +55,12 @@ var userController = {
  						}
  					});
  				}
+ 				else{
+ 					req.flash('login-error', 'Password was wrong!');
+ 			  		return res.redirect('/');
+ 				}
  			}
  			else{
- 				// req.flash('forr', 'login');
  				req.flash('login-error', 'Login credentials mismatch!');
  			  	return res.redirect('/');
  			}
