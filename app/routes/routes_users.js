@@ -6,12 +6,12 @@ var User = require('../controllers/userController');
 
 // --------------------------------------------= Routes accessable ONLY after login };
 
-router.use(function(req, res, next) {
-  	if(req.session.isAuthenticated)
-  		next();
-  	else
-  		return res.redirect('/');
-});
+// router.use(function(req, res, next) {
+//   	if(req.session.isAuthenticated)
+//   		next();
+//   	else
+//   		return res.redirect('/');
+// });
 
 router.post('/create', function(req, res){		// user registration
 	// console.log(req.body);

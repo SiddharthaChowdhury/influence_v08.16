@@ -19,15 +19,14 @@ router.get('/', function(req, res) {
   	res.render('index', res_obj);
 });
 
-
 // --------------------------------------------= Routes accessable after login };
 
-router.use(function(req, res, next) {			// If user LOGGED in 
-  	if(req.session.isAuthenticated)
-  		next();
-  	else
-  		return res.redirect('/');
-});
+// router.use(function(req, res, next) {			// If user LOGGED in 
+//   	if(req.session.isAuthenticated)
+//   		next();
+//   	else
+//   		return res.redirect('/');
+// });
 
 router.get('/markdown', function(req, res) {					// Markdown page
   	res.render('markdown', { title: 'markdown | Dockety' });
