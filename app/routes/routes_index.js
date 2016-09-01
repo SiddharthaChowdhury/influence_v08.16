@@ -19,19 +19,29 @@ router.get('/', function(req, res) {
   	res.render('index', res_obj);
 });
 
-router.get('/markdown', function(req, res) {
+
+// --------------------------------------------= Routes accessable after login };
+
+router.use(function(req, res, next) {			// If user LOGGED in 
+  	if(req.session.isAuthenticated)
+  		next();
+  	else
+  		return res.redirect('/');
+});
+
+router.get('/markdown', function(req, res) {					// Markdown page
   	res.render('markdown', { title: 'markdown | Dockety' });
 });
 
 router.get('/wysiwyg', function(req, res) {
-  	res.render('wysiwyg', { title: 'wysiwyg | Dockety' });
+  	res.render('wysiwyg', { title: 'wysiwyg | Dockety' });		// WYSIWYG page
 });
 
-router.get('/dashboard', function(req, res) {
+router.get('/dashboard', function(req, res) {					// user dashboard
   	res.render('dashboard', { title: 'dashboard | Dockety' });
 });
 
-router.get('/space', function(req, res) {
+router.get('/space', function(req, res) {						// Space management page
 	var res_obj = { 
 		title: 'space | Dockety', 
 		error : req.flash('error')[0] || undefined, 
@@ -40,4 +50,7 @@ router.get('/space', function(req, res) {
 	console.log(res_obj);
   	res.render('space', res_obj);
 });
+
+// --------------------------------------------=	ENDS
+
 module.exports = router;
