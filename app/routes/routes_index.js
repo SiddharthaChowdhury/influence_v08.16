@@ -1,12 +1,9 @@
 
 var express = require('express');
 var router = express.Router();
-
+var User = require('../controllers/userController');
 ////https://www.airpair.com/javascript/complete-expressjs-nodejs-mongodb-crud-skeleton
-// router.use(function(req, res, next) {
-//   // .. some logic here .. like any other middleware
-//   next();
-// });
+
 
 // GET home page.
 router.get('/', function(req, res) {
@@ -37,12 +34,12 @@ router.post('/login', function(req, res){		// user login
 
 // --------------------------------------------= Routes accessable after login };
 
-// router.use(function(req, res, next) {			// If user LOGGED in 
-//   	if(req.session.isAuthenticated)
-//   		next();
-//   	else
-//   		return res.redirect('/');
-// });
+router.use(function(req, res, next) {			// If user LOGGED in 
+  	if(req.session.isAuthenticated)
+  		next();
+  	else
+  		return res.redirect('/');
+});
 
 router.get('/markdown', function(req, res) {					// Markdown page
   	res.render('markdown', { title: 'markdown | Dockety' });
