@@ -32,6 +32,9 @@ router.post('/login', function(req, res){						// user login
 	User.login(req, res);
 });
 
+router.get('/FAQ', function(req, res){						// FAQs
+	res.render('faq');
+});
 // --------------------------------------------= Routes accessable after login };
 
 router.use(function(req, res, next) {			// If user LOGGED in 

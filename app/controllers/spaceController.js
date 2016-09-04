@@ -33,11 +33,7 @@ var spaceController = {
 				req.flash('error', 'Duplicate CODE found. Please enter a new CODE.');
  			  	return res.redirect('/space');
 			}
-		});
-
-		
-		
-				
+		});		
 	},
 
 	check_code: function(req, res){
