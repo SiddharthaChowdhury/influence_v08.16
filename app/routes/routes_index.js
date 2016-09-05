@@ -32,12 +32,13 @@ router.post('/login', function(req, res){						// user login
 	User.login(req, res);
 });
 
-router.get('/FAQ', function(req, res){						// FAQs
+router.get('/FAQ', function(req, res){							// FAQs
 	res.render('faq');
 });
+
 // --------------------------------------------= Routes accessable after login };
 
-router.use(function(req, res, next) {			// If user LOGGED in 
+router.use(function(req, res, next) {						// If user LOGGED in 
   	if(req.session.isAuthenticated)
   		next();
   	else
@@ -45,16 +46,16 @@ router.use(function(req, res, next) {			// If user LOGGED in
 });
 
 router.get('/markdown', function(req, res) {					// Markdown page
-  	res.render('markdown', { title: 'markdown | Dockety' });
+  	res.render('private/markdown', { title: 'markdown | Dockety' });
 });
 
 router.get('/wysiwyg', function(req, res) {
-  	res.render('wysiwyg', { title: 'wysiwyg | Dockety' });		// WYSIWYG page
+  	res.render('private/wysiwyg', { title: 'wysiwyg | Dockety' });		// WYSIWYG page
 });
 
 router.get('/dashboard', function(req, res) {					// user dashboard
 	// console.log(req.session.User);
-  	res.render('dashboard', { title: 'dashboard | Dockety', user: req.session.User });
+  	res.render('private/dashboard', { title: 'dashboard | Dockety', user: req.session.User });
 });
 
 router.get('/profile', function(req, res) {	
@@ -64,7 +65,7 @@ router.get('/profile', function(req, res) {
 		error: req.flash('error')[0] || undefined, 
 		success: req.flash('success')[0] || undefined
 	}
-  	res.render('profile', res_obj);
+  	res.render('private/profile', res_obj);
 });
 
 router.get('/space', function(req, res) {						// Space management page
@@ -74,9 +75,12 @@ router.get('/space', function(req, res) {						// Space management page
 		success: req.flash('success')[0] || undefined
 	};
 	console.log(res_obj);
-  	res.render('space', res_obj);
+  	res.render('private/space', res_obj);
 });
 
+router.get('/team', function(req, res){
+	res.render('private/team')
+});
 // --------------------------------------------=	ENDS
 
 module.exports = router;
