@@ -2,67 +2,82 @@
 	<div class="container">
 		
 		<div class="row" id="space_content">
-			<form action="/space/create" method="post">
-				<div class="col-md-6">
-				<% if(typeof error != 'undefined')  {%>
-					<div class="row text-center">
-						<div class="mike-error"> <%= error %> </div>
-					</div>
-				<% } %>
-				<% if(typeof success == 'undefined')  {%>
-					<div class="row">
-						<div class="form-group">
-							<label for="space_name">Space name:</label>
-							<input type="text" class="form-control" id="space_name" name="space_name" placeholder="{ Department | Organisation }">
-						</div>
-						<div class="form-group">
-							<label for="spae_desc">Space description:</label>
-							<textarea class="form-control" rows="3" id="spae_desc" name="space_description" placeholder="This space is about ~ "></textarea>
-						</div>
-						<div class="form-group">
-							<label for="spae_desc">CODE:</label>
-							<input type="text" class="" id="space_code" name="space_code" placeholder=" UNIQ-CODE "> <small><font class="code_msg" color="red"></font></small>
-						</div>
-						<div class="form-group">
-							<button class=" btn btn-default pull-right"> Create space </button>
-						</div>
-					</div>
-				<% } else {%>
-					<div class="row text-center">
-						<div class="mike-success"> 
-							<h4><%= success %></h4> 
-							<div>Now you can create <a href="/team">teams</a> in this space.</div>
-						</div>
-					</div>
-				<% } %>
-					<div class="col-md-12">
-						<div class="h3"><label>Why is "Space" important ? </label></div>
-						<hr>
-						<p>
-							<b>If you are an organisation</b>, then <b>Space</b> is first step (or parent) which you need
-							to create to keep everything organized. Consider it is a virtual directory within which you create <b>
-							Teams</b>. Where <b>Team</b> will contain <b>Members/Users</b> who are responsible for creating articles 
-							(private/public).
-							<br>
-							<b>For personal usage</b> you do not necessarily have to create any space. At the time of account creation,
-							we provide you with a personal space where you can document your work privately. Also you can publish your 
-							article/documentation globally, for the world to know about your work, <u>(and helping people with your knowledge)</u>.
-						</p>
-					</div>
-					<div class="col-md-12">
-						<div class="h3"><label>What is "CODE" for ? </label></div>
-						<hr>
-						<p>
-							<b>CODE</b>, helps you and us to uniquely identify the spaces you create. For someone to join the <b>"Space"</b> you created, needs to enter the Space's CODE at the very first step.
-						</p>
-					</div>
+			<div class="col-md-6">
+				<!-- SPACE CREATION Starts -->
+				<div class="col-md-12">
+					<h2>Create a new space.</h2> 
+					<hr>
+					<form action="/space/create" method="post">
+						<% if(typeof error != 'undefined')  {%>
+							<div class="row text-center">
+								<div class="mike-error"> <%= error %> </div>
+							</div>
+						<% } %>
+						<% if(typeof success == 'undefined')  {%>
+							<div class="row">
+								<div class="form-group">
+									<label for="space_name">Space name:</label>
+									<input type="text" class="form-control" id="space_name" name="space_name" placeholder="{ Department | Organisation }">
+								</div>
+								<div class="form-group">
+									<label for="spae_desc">Space description:</label>
+									<textarea class="form-control" rows="3" id="spae_desc" name="space_description" placeholder="This space is about ~ "></textarea>
+								</div>
+								<div class="form-group">
+									<label for="spae_desc">CODE:</label>
+									<input type="text" class="" id="space_code" name="space_code" placeholder=" UNIQ-CODE "> <small><font class="code_msg" color="red"></font></small>
+								</div>
+								<div class="form-group">
+									<button class=" btn btn-default pull-right"> Create space </button>
+								</div>
+							</div>
+						<% } else {%>
+							<div class="row text-center">
+								<div class="mike-success"> 
+									<h4><%= success %></h4> 
+									<div>Now you can create <a href="/team">teams</a> in this space.</div>
+								</div>
+							</div>
+						<% } %>
+					</form>
 				</div>
-				<div class="col-md-6 text-center">
-					<h3>What is "Space" ?</h3>
+				<!-- SPACEs already created-->
+				<div class="col-md-12">
+					<div class="h3">Your spaces</div>
+					<%if( typeof spaces == 'undefined') {%> 
+						<small>It seems you dont have any spaces created</small>
+					<%}%>
+				</div>
+			</div>
+			<div class="col-md-6 text-center">
+				<div class="col-md-12">
+					<div class="h3"><label>What is "Space" ?</label></div>
 					<hr>
 					<p><img src="images/hierarchy.svg" ondragstart="return false;"></p>
+					<hr>
 				</div>
-			</form>
+				<div class="col-md-12">
+					<div class="h3"><label>Why is "Space" important ? </label></div>
+					<hr>
+					<p>
+						<b>If you are an organisation</b>, then <b>Space</b> is first step (or parent) which you need
+						to create to keep everything organized. Consider it is a virtual directory within which you create <b>
+						Teams</b>. Where <b>Team</b> will contain <b>Members/Users</b> who are responsible for creating articles 
+						(private/public).
+						<br>
+						<b>For personal usage</b> you do not necessarily have to create any space. At the time of account creation,
+						we provide you with a personal space where you can document your work privately. Also you can publish your 
+						article/documentation globally, for the world to know about your work, <u>(and helping people with your knowledge)</u>.
+					</p>
+				</div>
+				<div class="col-md-12">
+					<div class="h3"><label>What is "CODE" for ? </label></div>
+					<hr>
+					<p>
+						<b>CODE</b>, helps you and us to uniquely identify the spaces you create. For someone to join the <b>"Space"</b> you created, needs to enter the Space's CODE at the very first step.
+					</p>
+				</div>
+			</div>
 		</div>
 	</div>
 <% include ../../partials/dashboard_partials/foot %>

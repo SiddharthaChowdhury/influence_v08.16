@@ -1,5 +1,6 @@
 var User = require('../models/user');
 var bcrypt = require('bcrypt-nodejs');
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 var userController = {
 	login: function(req, res){
@@ -87,7 +88,7 @@ var userController = {
 			country: req.body.country,
 			formatted_address: req.body.address
 		}
-		User.update({ email: req.session.User.email }, { $set: u}, function(err, usr){
+		User.update({ _id: ObjectId(req.session.User.uid.toString()) }, { $set: u}, function(err, usr){
 			if(err) {
 				req.flash('error', err);
 				return res.redirect('/profile');
