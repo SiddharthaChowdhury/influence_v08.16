@@ -5,9 +5,6 @@ var Schema = mongoose.Schema;
 
 var teamSchemaPrimary = new Schema({
 
-	team_code : {
-		type: String
-	},
 	team_name: {
 		type: String
 	},

@@ -1,5 +1,45 @@
 <% include ../../partials/dashboard_partials/head %>
 	<div class="container">
-		ssssss
+		<div class="row">
+		<% if(spaces.length != 0) {%>
+			<div class="col-md-8 col-md-offset-2">
+				<h2>Create new team</h2>
+				<% if(typeof error != 'undefined')  {%>
+					<div class="row text-center">
+						<div class="mike-error"> <%= error %> </div>
+					</div>
+				<% } %>
+				<% if(typeof success != 'undefined')  {%>
+					<div class="row text-center">
+						<div class="mike-success"> <%= success %> </div>
+					</div>
+				<% } %>
+				<form action="/team/create" method="post">
+					<div class="form-group">
+						<label for="team_name">Team name:</label>
+						<input type="text" class="form-control" id="team_name" name="team_name" placeholder=" Give a name to your new team. ">
+					</div>
+					<div class="form-group">
+						<label for="team_desc">Team description:</label>
+						<textarea class="form-control" rows="3" id="team_desc" name="team_desc" placeholder="This team is about ~ "></textarea>
+					</div>
+					<div class="col-md-6">
+						<h3>Choose the space for team</h3>
+						<%for( var x in spaces) {%>
+							<div class="radio">
+							  	<label><input type="radio" name="selected_space" value="<%= spaces[x]['space_code'] %>"><%= spaces[x]['space_name'] %></label>
+							</div>
+						<%}%>
+					</div>
+					<div class="col-md-6">
+						<button class="btn btn-default pull-right" type="submit">Create team</button>
+					</div>
+				</form>
+			</div>
+		<% } else {%>
+			<h4>It seems you dont have any space created.</h4>
+			<small><a href="/space"> Please create a space, in where you can create teams.</a></small>
+		<% } %>
+		</div>
 	</div>
 <% include ../../partials/dashboard_partials/foot %>
