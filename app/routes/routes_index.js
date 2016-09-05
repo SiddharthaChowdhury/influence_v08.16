@@ -2,6 +2,7 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../controllers/userController');
+var Space = require('../controllers/spaceController');
 ////https://www.airpair.com/javascript/complete-expressjs-nodejs-mongodb-crud-skeleton
 
 
@@ -69,13 +70,7 @@ router.get('/profile', function(req, res) {
 });
 
 router.get('/space', function(req, res) {						// Space management page
-	var res_obj = { 
-		title: 'space | Dockety', 
-		error : req.flash('error')[0] || undefined, 
-		success: req.flash('success')[0] || undefined
-	};
-	console.log(res_obj);
-  	res.render('private/space', res_obj);
+	Space.get_user_space(req, res);
 });
 
 router.get('/team', function(req, res){

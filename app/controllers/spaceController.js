@@ -1,5 +1,6 @@
 var Space = require('../models/space');
 var moment = require('moment');
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 var spaceController = {
 	create_newSpace : function(req, res){
@@ -11,6 +12,7 @@ var spaceController = {
 		}
 		var newSpace = new Space({
 			admin_email: req.session.User.email,
+			admin_id: req.session.User.uid,
 			space_code : req.body.space_code,
 			space_name: req.body.space_name,
 			space_desc: req.body.space_description,
@@ -58,6 +60,19 @@ var spaceController = {
 				}
 			});
 		}
+	},
+
+	get_user_space: function(req, res){
+		Space.find({_id: ObjectId(req.session.User.uid)}, function(err, spaces){
+			console.log(spaces);
+			var res_obj = { 
+				title: 'space | Dockety', 
+				error : req.flash('error')[0] || undefined, 
+				success: req.flash('success')[0] || undefined
+			};
+			console.log(res_obj);
+		  	res.render('private/space', res_obj);
+		});
 	},
 }
 
