@@ -44,9 +44,19 @@
 				<!-- SPACEs already created-->
 				<div class="col-md-12">
 					<div class="h3">Your spaces</div>
-					<%if( typeof spaces == 'undefined') {%> 
+					<%if( typeof spaces == 'undefined' || spaces.length == 0) {%> 
 						<small>It seems you dont have any spaces created</small>
-					<%}%>
+					<%} else {%>
+						<% for( var x in spaces ){ %>
+							<div class="single_space">
+								<div class="single_spaceTitle">
+									<label><%= spaces[x]['space_name'] %></label>
+									<small>  < CODE: <%= spaces[x]['space_code'] %> ></small>
+									<a href="space_configure" class="pull-right"><i class="fa fa-cog" aria-hidden="true"></i> Configure</a>
+								</div>
+							</div>
+						<% } %>
+					<% } %>
 				</div>
 			</div>
 			<div class="col-md-6 text-center">

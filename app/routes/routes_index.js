@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../controllers/userController');
 var Space = require('../controllers/spaceController');
+var Team = require('../controllers/teamController');
 ////https://www.airpair.com/javascript/complete-expressjs-nodejs-mongodb-crud-skeleton
 
 
@@ -74,7 +75,7 @@ router.get('/space', function(req, res) {						// Space management page
 });
 
 router.get('/team', function(req, res){
-	res.render('private/team')
+	Team.manage_team(req, res);
 });
 // --------------------------------------------=	ENDS
 

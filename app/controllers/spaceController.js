@@ -63,12 +63,13 @@ var spaceController = {
 	},
 
 	get_user_space: function(req, res){
-		Space.find({_id: ObjectId(req.session.User.uid)}, function(err, spaces){
+		Space.find({admin_id: ObjectId(req.session.User.uid)}, function(err, spaces){
 			console.log(spaces);
 			var res_obj = { 
 				title: 'space | Dockety', 
 				error : req.flash('error')[0] || undefined, 
-				success: req.flash('success')[0] || undefined
+				success: req.flash('success')[0] || undefined,
+				spaces: spaces
 			};
 			console.log(res_obj);
 		  	res.render('private/space', res_obj);
