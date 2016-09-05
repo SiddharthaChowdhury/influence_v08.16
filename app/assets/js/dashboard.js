@@ -16,6 +16,7 @@ $(function(){
 					timer();
 				else{
 					count = 4;
+					$('.code_msg').attr('color','#696969');
 					$('.code_msg').text("Please wait...")
 					clearTimeout(t);
 					ajx_checkCode();
@@ -27,25 +28,25 @@ $(function(){
 			$.ajax({
 				method: "POST",
 				url: "/space/code/check",
-				data: { code: $('#space_code').val() }
-			})
-			  	.done(function( msg, textStatus, jqXHR ) {
-			  		if( jqXHR.status == 200 ){
-			  			$('.code_msg').attr('color','green');
+				data: { code: $('#space_code').val() },
+				statusCode:{
+					400: function(resp){
+						$('.code_msg').attr('color','#DF013A');
+						$('.code_msg').html('&nbsp;<i class="fa fa-times" aria-hidden="true"></i> CODE is available');
+					},
+					200: function(resp){
+						$('.code_msg').attr('color','#04B431');
 			  			$('.code_msg').html('&nbsp;<i class="fa fa-check" aria-hidden="true"></i> CODE is unique');
-			    		console.log(jqXHR.status);
-			  		}
-			  		else{
-			  			$('.code_msg').html('&nbsp;<i class="fa fa-times" aria-hidden="true"></i> CODE is available');
-			  		}
-			  	});
+					}
+				}
+			});
 		}
 
 
 		$('#space_code').keyup(function(e){
 			e.preventDefault();
 			if($(this).val().length < 5){
-				$('.code_msg').attr('color','red');
+				$('.code_msg').attr('color','#DF013A');
 				$('.code_msg').text("Add atleast "+ (5 - parseInt($(this).val().length)) +" more letters")
 			}
 			else{

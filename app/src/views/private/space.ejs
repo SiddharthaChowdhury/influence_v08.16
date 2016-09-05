@@ -5,7 +5,9 @@
 			<form action="/space/create" method="post">
 				<div class="col-md-6">
 				<% if(typeof error != 'undefined')  {%>
-					<font color="red"><%= error %></font>
+					<div class="row text-center">
+						<div class="mike-error"> <%= error %> </div>
+					</div>
 				<% } %>
 				<% if(typeof success == 'undefined')  {%>
 					<div class="row">
@@ -27,7 +29,10 @@
 					</div>
 				<% } else {%>
 					<div class="row text-center">
-						<div class="mike"> <%= success %> </div>
+						<div class="mike-success"> 
+							<h4><%= success %></h4> 
+							<div>Now you can create <a href="/team">teams</a> in this space.</div>
+						</div>
 					</div>
 				<% } %>
 					<div class="col-md-12">

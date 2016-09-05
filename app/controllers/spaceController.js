@@ -10,7 +10,7 @@ var spaceController = {
 			return res.redirect('/space');
 		}
 		var newSpace = new Space({
-
+			admin_email: req.session.User.email,
 			space_code : req.body.space_code,
 			space_name: req.body.space_name,
 			space_desc: req.body.space_description,
@@ -52,8 +52,8 @@ var spaceController = {
 					return;
 				}
 				else{
-					res.status(500);
-					res.send("found");
+					res.status(400);
+					res.send("Found");
 					return;
 				}
 			});
