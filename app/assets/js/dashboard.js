@@ -57,7 +57,7 @@ $(function(){
 		}
 
 														// THE TREE
-		$('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+		$('.tree li:has(ul)').addClass('parent_li')
 	    $(document).on('click', '.fetch_teams',function (e) {
 	    	var self = $(this)
 	        var children = $(this).parent('li.parent_li').find(' > ul > li');
