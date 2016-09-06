@@ -27,41 +27,28 @@
 		<hr>
 		<div class="row">
 			<div class="col-md-7">
-				<div class="h3">Writings <small>(1)</small><a href="#" class="view-all"> View all</a></div>
+				<div class="h3">The Tree</div>
 				<hr>
 				<div class="col-md-12">
-					<div class="col-md-3">10-July-2016</div>
-					<div class="col-md-9">Managing nginx and configuring load balancer to handle incoming traffic effectively</div>
+					<%if( spaces.length == 0 ){ %> 
+						<small>It seems you dont have any space created.<a href="/space"> Please start with creating a space.</a></small>
+					<%}else{%>
+						<div class="tree well">
+							<ul>
+								<%for( var i in spaces ){%> 
+									<li>
+										<span class="fetch_teams" data-fetched="false" data-id="<%= spaces[i]['_id'] %>" data-fetch="teams">
+											<i class="fa fa-folder-open" aria-hidden="true"></i> <%= spaces[i]['space_name'] %>
+										</span> <a href=""><i class="fa fa-cog" aria-hidden="true"></i></a>
+									</li>
+								<%}%>
+							</ul>
+						</div>
+					<%}%>
 				</div>
 			</div>
 			<div class="col-md-5">
 
-				<div class="panel-group" id="accordion">
-				    <div class="panel panel-default">
-					    <div class="panel-heading">
-					        <h4 class="panel-title">
-					          <a data-toggle="collapse" class="jq_asyncFetch" data-fetched="false" data-id="<%= user.uid %>" data-fetch="spaces" data-parent="#accordion" href="#collapse2">Spaces <small>(<%= user.spaces.length %>)</small></a>
-					        </h4>
-					    </div>
-					    <div id="collapse2" class="panel-collapse collapse">
-					        <div class="panel-body">
-					        	<label>Please wait &nbsp;<i class="fa fa-refresh fa-spin"></i> </label>
-					        </div>
-					    </div>
-				    </div>
-				    <div class="panel panel-default">
-					    <div class="panel-heading">
-					        <h4 class="panel-title">
-					          <a data-toggle="collapse" class="jq_asyncFetch" data-fetched="false" data-id="<%= user.uid %>" data-fetch="teams" data-parent="#accordion" href="#collapse3">Teams <small>(<%= user.teams.length %>)</small></a>
-					        </h4>
-					    </div>
-					    <div id="collapse3" class="panel-collapse collapse">
-					        <div class="panel-body">
-					        	<label>Please wait &nbsp;<i class="fa fa-refresh fa-spin"></i> </label>
-					        </div>
-					    </div>
-				    </div>
-				</div>
 			</div>
 		</div>
 	</div>

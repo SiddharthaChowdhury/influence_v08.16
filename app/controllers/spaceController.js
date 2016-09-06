@@ -86,9 +86,28 @@ var spaceController = {
 		});
 	},
 
-	fetch_async: function(req, res){
-		
-	}
+	// fetch_async: function(req, res){
+	// 	if(!req.body.uid){
+	// 		res.status(400);
+	// 		res.send("Error! Important data missing.");
+	// 		return;
+	// 	}
+	// 	else
+	// 	{
+	// 		Space.find({admin_id : req.session.User.uid}, function(err, teams){
+	// 			if(err){
+	// 				res.status(400);
+	// 				res.send("Error! Failed to get team informations.");
+	// 				return;
+	// 			}
+	// 			else{
+	// 				res.status(200);
+	// 				res.send(teams);
+	// 				return;
+	// 			}
+	// 		})
+	// 	}
+	// }
 }
 
 module.exports = spaceController;

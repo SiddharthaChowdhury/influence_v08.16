@@ -4,47 +4,77 @@ $(function(){
 	// ============================= DASHBOARD ==================================
 
 	if( $('#dashboard_view').length == 1 ){
-
-		$('.jq_asyncFetch').click(function(e){ 			// Fetch async team/space
-			if( $(this).attr('data-fetched') == 'false' ){
+		function fetchAsync(elem){
+			if( elem.attr('data-fetched') == 'false' ){
 				var attr = {
-					'self' : $(this),
-					'uid'  : $(this).attr('data-id'),
-					'stat' : $(this).attr('data-fetched'),
-					'url'  : "/users/fetch/async/" + $(this).attr('data-fetch'),
-					'body' : $(this).closest('.panel').find('.panel-body'),
-					'tofetch' : $(this).attr('data-fetch')	
+					'self' : elem,
+					'sid'  : elem.attr('data-id'),
+					'stat' : elem.attr('data-fetched'),
+					'url'  : "/users/fetch/async/" + elem.attr('data-fetch'),
+					'body' : elem.closest('li'),
+					'tofetch' : elem.attr('data-fetch')	
 				};
+				console.log(attr)
 				$.ajax({
 					method: "POST",
 					url: attr.url,
 					dataType: 'json',
-					data: { uid: attr.uid },
+					data: { sid: attr.sid },
 					statusCode:{
 						400: function(resp){
-							attr.body.html(resp.responseText);
+							attr.body.append('<div>'+ resp.responseText +'</div>');
 						},
 						200: function(resp){
-							var space = '', name;
-							 
-							for( var i in resp ){
-								name = ( attr.tofetch == 'teams' ) ? resp[i]['team_name'] : resp[i]['space_name']+ '<small> CODE:'+ resp[i]['space_code'] +'</small>'
+							
+							if( resp.length > 0 )
+							{
+								var space = '<ul>', name;
+								for( var i in resp ){
+									name = ( attr.tofetch == 'teams' ) ? resp[i]['team_name'] : resp[i]['space_name']+ '<small> CODE:'+ resp[i]['space_code'] +'</small>'
 
-								space+='<div class="single_asyncElement">'
-								space+=		'<div class="single_asyncElementTitle">'
-								space+=			'<label>'+name+'</label>'
-								space+=			'<a href="single_asyncElementConfig" class="pull-right"><i class="fa fa-cog" aria-hidden="true"></i> Configure</a>'
-								space+=		'</div>'
-								space+='</div>';
-
-								attr.body.html(space);
+									space+='<li>'
+									space+=		'<span class="fetch_articles">'
+									space+=			'<i class="fa fa-plus-square" aria-hidden="true"></i> &nbsp;'+ name
+									space+=		'</span> <a href=""><i class="fa fa-cog" aria-hidden="true"></i></a>'
+									space+='</li>';
+								}
+								space += '</ul>';
+								attr.body.append(space);
+								attr.self.attr('data-fetched', true);
 							}
-							attr.self.attr('data-fetched', true);
+							else{
+
+								var space ='<ul><li>'
+								space+=		'<div> &nbsp;No team found. <a href="/team">Create a team </a></div>'
+								space+='</li></ul>';
+								attr.body.append(space);
+								attr.self.attr('data-fetched', true);
+							}
 						}
 					}
 				});
 			}
-		});
+		}
+
+														// THE TREE
+		$('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+	    $(document).on('click', '.fetch_teams',function (e) {
+	    	var self = $(this)
+	        var children = $(this).parent('li.parent_li').find(' > ul > li');
+	        if (children.is(":visible")) {
+	            
+	            
+	            fetchAsync(self);
+	            children.hide('fast');
+	            $(this).attr('title', 'Expand this branch').find(' > i').addClass('fa-plus-square').removeClass('fa-minus-square');
+	        } else {
+
+	            fetchAsync(self);
+	            children.show('fast');
+	            $(this).attr('title', 'Collapse this branch').find(' > i').addClass('fa-minus-square').removeClass('fa-plus-square');
+	        }
+	        e.stopPropagation();
+	    });
 	}
 
 	// ============================= SPACE ==================================

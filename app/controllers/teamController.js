@@ -75,15 +75,14 @@ var teamController = {
 		}
 	},
 	fetch_async: function(req, res){
-		console.log(req.body)
-		if(!req.body.uid){
+		if(!req.body.sid){
 			res.status(400);
 			res.send("Error! Important data missing.");
 			return;
 		}
 		else
 		{
-			Team.find({owner_id : req.session.User.uid}, function(err, teams){
+			Team.find({space : ObjectId(req.body.sid)}, function(err, teams){
 				if(err){
 					res.status(400);
 					res.send("Error! Failed to get team informations.");

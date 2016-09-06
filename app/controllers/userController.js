@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Space    = require('../models/space');
 var bcrypt = require('bcrypt-nodejs');
 var ObjectId = require('mongoose').Types.ObjectId; 
 
@@ -76,6 +77,22 @@ var userController = {
 				});
 			}
 		});
+	},
+
+	getDashboard: function(req, res){
+		Space.find({admin_id : req.session.User.uid}, function(err, spaces){
+			if(err) throw err;
+			else{
+				console.log(spaces)
+				var obj = { 
+						title: 'dashboard | Dockety',
+						user: req.session.User,
+						spaces: spaces
+					};
+				res.render('private/dashboard', obj);
+				return;
+			}
+		})
 	},
 
 	save_account: function(req, res){

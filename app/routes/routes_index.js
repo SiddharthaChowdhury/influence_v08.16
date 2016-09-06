@@ -56,8 +56,7 @@ router.get('/wysiwyg', function(req, res) {
 });
 
 router.get('/dashboard', function(req, res) {					// user dashboard
-	// console.log(req.session.User);
-  	res.render('private/dashboard', { title: 'dashboard | Dockety', user: req.session.User });
+	User.getDashboard(req, res);
 });
 
 router.get('/profile', function(req, res) {	
