@@ -89,6 +89,18 @@ a:hover{
 	font-size: 13px;
 }
 
+.single_asyncElement{
+	border:1px solid #696969;
+	margin-bottom: 4px;
+	padding: 5px 10px 0px 10px;
+}
+.single_asyncElementTitle{
+	color: #696969;
+	font-size: 14px;
+}
+.single_asyncElementConfig{
+	color: #c0c0c0;
+}
 /*-------------------------------------------------*/
 /*------------------ SPACE --------------------*/
 

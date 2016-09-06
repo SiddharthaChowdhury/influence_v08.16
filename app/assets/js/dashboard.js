@@ -1,6 +1,52 @@
 // dashboard.js
 $(function(){
 	
+	// ============================= DASHBOARD ==================================
+
+	if( $('#dashboard_view').length == 1 ){
+
+		$('.jq_asyncFetch').click(function(e){ 			// Fetch async team/space
+			if( $(this).attr('data-fetched') == 'false' ){
+				var attr = {
+					'self' : $(this),
+					'uid'  : $(this).attr('data-id'),
+					'stat' : $(this).attr('data-fetched'),
+					'url'  : "/users/fetch/async/" + $(this).attr('data-fetch'),
+					'body' : $(this).closest('.panel').find('.panel-body'),
+					'tofetch' : $(this).attr('data-fetch')	
+				};
+				$.ajax({
+					method: "POST",
+					url: attr.url,
+					dataType: 'json',
+					data: { uid: attr.uid },
+					statusCode:{
+						400: function(resp){
+							attr.body.html(resp.responseText);
+						},
+						200: function(resp){
+							var space = '', name;
+							 
+							for( var i in resp ){
+								name = ( attr.tofetch == 'teams' ) ? resp[i]['team_name'] : resp[i]['space_name']+ '<small> CODE:'+ resp[i]['space_code'] +'</small>'
+
+								space+='<div class="single_asyncElement">'
+								space+=		'<div class="single_asyncElementTitle">'
+								space+=			'<label>'+name+'</label>'
+								space+=			'<a href="single_asyncElementConfig" class="pull-right"><i class="fa fa-cog" aria-hidden="true"></i> Configure</a>'
+								space+=		'</div>'
+								space+='</div>';
+
+								attr.body.html(space);
+							}
+							attr.self.attr('data-fetched', true);
+						}
+					}
+				});
+			}
+		});
+	}
+
 	// ============================= SPACE ==================================
 		
 	if( $('#space_content').length == 1 ){	

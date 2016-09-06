@@ -85,6 +85,10 @@ var spaceController = {
 		  	res.render('private/space', res_obj);
 		});
 	},
+
+	fetch_async: function(req, res){
+		
+	}
 }
 
 module.exports = spaceController;

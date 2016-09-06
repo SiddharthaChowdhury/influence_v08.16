@@ -1,5 +1,5 @@
 <% include ../../partials/dashboard_partials/head %>
-	<div class="container">
+	<div class="container" id="dashboard_view">
 		<div class="row">
 			<div class="col-md-4">
 				<a href="/profile">
@@ -38,39 +38,30 @@
 
 				<div class="panel-group" id="accordion">
 				    <div class="panel panel-default">
-				      <div class="panel-heading">
-				        <h4 class="panel-title">
-				          <a data-toggle="collapse" class="jq_asyncFetch" data-fetched="false" data-id="<%= user.uid %>" data-fetch="spaces" data-parent="#accordion" href="#collapse2">Created spaces <small>(<%= user.spaces.length %>)</small></a>
-				        </h4>
-				      </div>
-				      <div id="collapse2" class="panel-collapse collapse">
-				        <div class="panel-body">
-				        	<label>Please wait &nbsp;<i class="fa fa-refresh fa-spin"></i> </label>
-				        </div>
-				      </div>
+					    <div class="panel-heading">
+					        <h4 class="panel-title">
+					          <a data-toggle="collapse" class="jq_asyncFetch" data-fetched="false" data-id="<%= user.uid %>" data-fetch="spaces" data-parent="#accordion" href="#collapse2">Spaces <small>(<%= user.spaces.length %>)</small></a>
+					        </h4>
+					    </div>
+					    <div id="collapse2" class="panel-collapse collapse">
+					        <div class="panel-body">
+					        	<label>Please wait &nbsp;<i class="fa fa-refresh fa-spin"></i> </label>
+					        </div>
+					    </div>
 				    </div>
 				    <div class="panel panel-default">
-				      <div class="panel-heading">
-				        <h4 class="panel-title">
-				          <a data-toggle="collapse" class="jq_asyncFetch" data-fetched="false" data-id="<%= user.uid %>" data-fetch="teams" data-parent="#accordion" href="#collapse3">Created teams <small>(<%= user.teams.length %>)</small></a>
-				        </h4>
-				      </div>
-				      <div id="collapse3" class="panel-collapse collapse">
-				        <div class="panel-body">
-				        	<label>Please wait &nbsp;<i class="fa fa-refresh fa-spin"></i> </label>
-				        </div>
-				      </div>
+					    <div class="panel-heading">
+					        <h4 class="panel-title">
+					          <a data-toggle="collapse" class="jq_asyncFetch" data-fetched="false" data-id="<%= user.uid %>" data-fetch="teams" data-parent="#accordion" href="#collapse3">Teams <small>(<%= user.teams.length %>)</small></a>
+					        </h4>
+					    </div>
+					    <div id="collapse3" class="panel-collapse collapse">
+					        <div class="panel-body">
+					        	<label>Please wait &nbsp;<i class="fa fa-refresh fa-spin"></i> </label>
+					        </div>
+					    </div>
 				    </div>
 				</div>
-
-				<!-- <div class="h3">Created team/s <small>(2)</small></div>
-				<hr>
-				<input type="hidden" name="spaces" id="spaces_hidden" value="['Personal', 'Global']">
-				<input type="hidden" name="spaces" id="counts_hidden" value="[2,9]">
-				<div class="col-md-12">
-					
-				
-				</div> -->
 			</div>
 		</div>
 	</div>

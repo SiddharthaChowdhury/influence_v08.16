@@ -35,8 +35,10 @@ var teamController = {
 				else{
 					if(space.length > 0){
 						var newTeam = new Team({
-							team_name: req.body.team_name,
-							team_desc: req.body.team_desc,
+							team_name : req.body.team_name,
+							team_desc : req.body.team_desc,
+							owner_id  : req.session.User.uid,
+							owner_email  : req.session.User.email,
 							space: ObjectId(space[0]._id)
 						});
 						newTeam.save(function(err, team){
@@ -70,6 +72,29 @@ var teamController = {
 					}
 				}
 			});
+		}
+	},
+	fetch_async: function(req, res){
+		console.log(req.body)
+		if(!req.body.uid){
+			res.status(400);
+			res.send("Error! Important data missing.");
+			return;
+		}
+		else
+		{
+			Team.find({owner_id : req.session.User.uid}, function(err, teams){
+				if(err){
+					res.status(400);
+					res.send("Error! Failed to get team informations.");
+					return;
+				}
+				else{
+					res.status(200);
+					res.send(teams);
+					return;
+				}
+			})
 		}
 	},
 }
