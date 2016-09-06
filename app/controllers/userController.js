@@ -26,6 +26,8 @@ var userController = {
 		 					if( typeof user[0].lng != 'undefined' ) u["lng"] = user[0].lng;
 		 					if( typeof user[0].city != 'undefined' ) u["city"] = user[0].city;
 		 					if( typeof user[0].country != 'undefined' ) u["country"] = user[0].country;
+		 					if( typeof user[0].spaces != 'undefined' ) u["spaces"] = user[0].spaces;
+		 					if( typeof user[0].teams != 'undefined' ) u["teams"] = user[0].teams;
 		 					if( typeof user[0].formatted_address != 'undefined' ) u["formatted_address"] = user[0].formatted_address;
 		 					req.session.isAuthenticated = true;
 		 					req.session.User = u;

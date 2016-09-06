@@ -57,9 +57,9 @@ $(function(){
 			}
 		})
 	}
-	// ============================= SPACE ==================================
+	// ============================= PROFILE ==================================
 
-	if( $('#account_view').length == 1 ){
+	if( $('#profile_view').length == 1 ){
 
 		var placeSearch, autocomplete;
         autocomplete = new google.maps.places.Autocomplete(

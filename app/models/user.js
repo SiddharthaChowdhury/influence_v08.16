@@ -43,8 +43,8 @@ var userSchemaPrimary = new Schema({
 		type: String,
         enum: ['admin', 'subadmin' ,'writer', 'reader']
 	},
-	teams: [{type: Schema.ObjectId, ref: 'Team'}], //the name of the model is "Team"
-	spaces: [{type: Schema.ObjectId, ref: 'Space'}], //the name of the model is "Team"
+	teams: [{type: Schema.ObjectId, ref: 'Team'}], 		//the name of the model is "Team"
+	spaces: [{type: Schema.ObjectId, ref: 'Space'}], 	//the name of the model is "Team"
 	updated_at: Date,
 	created_at: { 
 		type : Date, 

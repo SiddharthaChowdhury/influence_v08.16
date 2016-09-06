@@ -1,5 +1,6 @@
-var Space = require('../models/space');
-var moment = require('moment');
+var Space    = require('../models/space');
+var User     = require('../models/user');
+var moment   = require('moment');
 var ObjectId = require('mongoose').Types.ObjectId; 
 
 var spaceController = {
@@ -22,12 +23,21 @@ var spaceController = {
 		Space.find({space_code: newSpace.space_code}, function(err, space){
 			if(err) throw err;
 			if(space.length == 0){
-				newSpace.save(function(err){
+				newSpace.save(function(err, _space){
 					if(err) throw err;
 					else{
-						console.log("Space successfully created");
-						req.flash('success', 'Space successfully created');
- 			  			return res.redirect('/space');
+						User.update({_id: ObjectId(req.session.User.uid.toString())},{$push:{spaces: _space._id}}, function(err){
+							if(err){
+								req.flash('error', err);
+								return res.redirect('/team');
+							}
+							else{
+								console.log("Space successfully created");
+								req.session.User.spaces.push(_space._id);
+								req.flash('success', 'Space successfully created');
+		 			  			return res.redirect('/space');
+							}
+						});	
 					}
 				});
 			}
