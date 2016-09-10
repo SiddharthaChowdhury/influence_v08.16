@@ -57,7 +57,7 @@
 									<li class="parent_li">
 										<span class="fetch_teams" data-fetched="false" data-id="<%= spaces[i]['_id'] %>" data-fetch="teams" data-toggle="tooltip" data-placement="right" title="[ CODE : <%= spaces[i]['space_code'] %> ] <%= spaces[i]['space_desc'] %>">
 											<i class="fa fa-cubes" aria-hidden="true"></i> <%= spaces[i]['space_name'] %>
-										</span> <a href=""> <i class="fa fa-cog" aria-hidden="true"></i></a>
+										</span> <a href="#" class="prespace-context-cog"> <i class="fa fa-cog" aria-hidden="true"></i></a>
 									</li>
 								<%}%>
 							</ul>
@@ -69,5 +69,34 @@
 
 			</div>
 		</div>
+	</div>
+	<style type="text/css">
+		.context-menu1{
+			background-color: #fff;
+			border:1px solid #c0c0c0;
+			padding: 20px 15px 5px 10px;
+			display:none;
+			box-shadow: 3px 3px 3px #888888;
+		}
+		.context-menu1>a{
+			position: absolute;
+			top: 1px;
+			right: 6px;
+		}
+		.context-menu1>ul{
+			float: left;
+			padding-left: 5px !important;
+			display: inline;
+			list-style: none;
+		}
+	</style>
+	<div class="context-menu1">
+		<a class="close-context-menu" href="javascript:;">x</a>
+		<ul>
+			<li><a href="#">Element 1</a></li>
+			<li><a href="#">Element 2</a></li>
+			<li><a href="#">Element 3</a></li>
+			<li><a href="#">Element 4</a></li>
+		</ul>
 	</div>
 <% include ../../partials/dashboard_partials/foot %>

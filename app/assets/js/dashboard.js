@@ -5,32 +5,54 @@ $(function(){
 
 	$('[data-toggle="tooltip"]').tooltip();
 
+	var _contextMenu = function(){
+		var contextBoxClass= null;
+		var clickedOnClass= null;
+		var closeBtnClass= null;
+		var popupBesideClass= null;
+		this.config = function(obj){
+			this.contextBoxClass = obj.contextBoxClass;
+			this.clickedOnClass = obj.clickedOnClass;
+			this.closeBtnClass = obj.closeBtnClass;
+			this.popupBesideClass = obj.popupBesideClass || obj.clickedOnClass;
+		}
 
-	// make button open the menu
-    $('.prespace-context-cog').on('click', function(e) {
-        e.preventDefault();
-        $('.context-menu-one').contextMenu();
-        // or $('.context-menu-one').trigger("contextmenu");
-        // or $('.context-menu-one').contextMenu({x: 100, y: 100});
-    });
+		this.run = function(){
+			var contextMenu 		= $('.'+this.contextBoxClass),
+				popupBesideClass 	= $('.'+this.popupBesideClass),
+				clickedOnClass_str 	= '.'+this.clickedOnClass,
+				closeBtnClass_str 	= '.'+this.closeBtnClass,
+				contextMenu_str		= '.'+this.contextBoxClass; 
+			$('body').click(function(e){  
+				var target = $(e.target); 
+				if(!$(target).is(clickedOnClass_str) && !target.parents(contextMenu_str).length) {
+				    contextMenu.hide();
+				}
+			});
 
-    $.contextMenu({
-        selector: '.context-menu-one', 
-        trigger: 'none',
-        callback: function(key, options) {
-            var m = "clicked: " + key;
-            window.console && console.log(m) || alert(m); 
-        },
-        items: {
-            "edit": {name: "Edit", icon: "edit"},
-            "cut": {name: "Cut", icon: "cut"},
-            "copy": {name: "Copy", icon: "copy"},
-            "paste": {name: "Paste", icon: "paste"},
-            "delete": {name: "Delete", icon: "delete"},
-            "sep1": "---------",
-            "quit": {name: "Quit", icon: function($element, key, item){ return 'context-menu-icon context-menu-icon-quit'; }}
-        }
-    });
+			$(document).on('click', clickedOnClass_str, function(e){
+				e.preventDefault();
+				var coord = popupBesideClass.offset();
+				var width = popupBesideClass.outerWidth()+10;
+				contextMenu.css({top: Math.ceil(coord.top), left: parseInt(Math.ceil(coord.left)+width), position:'absolute'});
+				contextMenu.show();
+			});
+
+			$(document).on('click', closeBtnClass_str, function(){
+				contextMenu.hide();
+			})
+		}
+	}
+	// _contextMenu._contextMenu();
+	var x = new _contextMenu();
+	x.config({
+		contextBoxClass : 'context-menu1',
+		clickedOnClass : 'prespace-context-cog',
+		closeBtnClass : 'close-context-menu',
+		// popupBesideClass : 'progress'
+	})
+	x.run();
+
 	// ============================= DASHBOARD ==================================
 	if( $('#dashboard_view').length == 1 ){
 
@@ -65,7 +87,7 @@ $(function(){
 									space+='<li>'
 									space+=		'<span class="fetch_articles" title="Dev team of akademe">'
 									space+=			'<i class="fa fa-cube" aria-hidden="true"></i> &nbsp;'+ name
-									space+=		'</span> <a href="" class="context"><i class="fa fa-cog" aria-hidden="true"></i></a>'
+									space+=		'</span> <a href="#" class="prespace-context-cog"> <i class="fa fa-cog" aria-hidden="true"></i></a>'
 									space+='</li>';
 								}
 								space += '</ul>';
