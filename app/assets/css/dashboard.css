@@ -101,6 +101,9 @@ a:hover{
 .single_asyncElementConfig{
 	color: #c0c0c0;
 }
+.fetch_articles{
+	cursor: pointer;
+}
 
 /*{ THE TREE Styles }*/
 .tree {

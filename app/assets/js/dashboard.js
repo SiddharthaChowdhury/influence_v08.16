@@ -1,9 +1,39 @@
 // dashboard.js
 $(function(){
-	
-	// ============================= DASHBOARD ==================================
 
+	// ============================= DASHBOARD TREE==================================
+
+	$('[data-toggle="tooltip"]').tooltip();
+
+
+	// make button open the menu
+    $('.prespace-context-cog').on('click', function(e) {
+        e.preventDefault();
+        $('.context-menu-one').contextMenu();
+        // or $('.context-menu-one').trigger("contextmenu");
+        // or $('.context-menu-one').contextMenu({x: 100, y: 100});
+    });
+
+    $.contextMenu({
+        selector: '.context-menu-one', 
+        trigger: 'none',
+        callback: function(key, options) {
+            var m = "clicked: " + key;
+            window.console && console.log(m) || alert(m); 
+        },
+        items: {
+            "edit": {name: "Edit", icon: "edit"},
+            "cut": {name: "Cut", icon: "cut"},
+            "copy": {name: "Copy", icon: "copy"},
+            "paste": {name: "Paste", icon: "paste"},
+            "delete": {name: "Delete", icon: "delete"},
+            "sep1": "---------",
+            "quit": {name: "Quit", icon: function($element, key, item){ return 'context-menu-icon context-menu-icon-quit'; }}
+        }
+    });
+	// ============================= DASHBOARD ==================================
 	if( $('#dashboard_view').length == 1 ){
+
 		function fetchAsync(elem){
 			if( elem.attr('data-fetched') == 'false' ){
 				var attr = {
@@ -33,9 +63,9 @@ $(function(){
 									name = ( attr.tofetch == 'teams' ) ? resp[i]['team_name'] : resp[i]['space_name']+ '<small> CODE:'+ resp[i]['space_code'] +'</small>'
 
 									space+='<li>'
-									space+=		'<span class="fetch_articles">'
-									space+=			'<i class="fa fa-plus-square" aria-hidden="true"></i> &nbsp;'+ name
-									space+=		'</span> <a href=""><i class="fa fa-cog" aria-hidden="true"></i></a>'
+									space+=		'<span class="fetch_articles" title="Dev team of akademe">'
+									space+=			'<i class="fa fa-cube" aria-hidden="true"></i> &nbsp;'+ name
+									space+=		'</span> <a href="" class="context"><i class="fa fa-cog" aria-hidden="true"></i></a>'
 									space+='</li>';
 								}
 								space += '</ul>';
@@ -66,12 +96,12 @@ $(function(){
 	            
 	            fetchAsync(self);
 	            children.hide('fast');
-	            $(this).attr('title', 'Expand this branch').find(' > i').addClass('fa-plus-square').removeClass('fa-minus-square');
+	            $(this).find(' > i').addClass('fa-cubes').removeClass('fa-minus-square');
 	        } else {
 
 	            fetchAsync(self);
 	            children.show('fast');
-	            $(this).attr('title', 'Collapse this branch').find(' > i').addClass('fa-minus-square').removeClass('fa-plus-square');
+	            $(this).find(' > i').addClass('fa-minus-square').removeClass('fa-cubes');
 	        }
 	        e.stopPropagation();
 	    });

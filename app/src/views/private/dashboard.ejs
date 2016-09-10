@@ -28,18 +28,36 @@
 		<div class="row">
 			<div class="col-md-7">
 				<div class="h3">The Tree</div>
+				<span class="context-menu-one btn btn-neutral">press that button</span>
+				<button id="" class="btn btn-default prespace-context-cog" type="submit">Button</button>
 				<hr>
 				<div class="col-md-12">
-					<%if( spaces.length == 0 ){ %> 
-						<small>It seems you dont have any space created.<a href="/space"> Please start with creating a space.</a></small>
-					<%}else{%>
-						<div class="tree well">
+					<div class="tree well">
 							<ul>
+								<li class="parent_li">
+									<span data-toggle="tooltip" data-placement="right" title="This is your PERSONAL space. Any pages you create here, will be visible to only you and no one else.">
+										<i class="fa fa-shield" aria-hidden="true"></i> Personal
+									</span> <a href="#" class="prespace-context-cog"><i class="fa fa-cog" aria-hidden="true"></i></a>
+								</li>
+								<li class="parent_li">
+									<span data-toggle="tooltip" data-placement="right" title="This is the PUBLIC space. Any pages you create here, will be visible publicly.">
+										<i class="fa fa-globe" aria-hidden="true"></i> Public
+									</span> <a href="#" class="prespace-context-cog"><i class="fa fa-cog" aria-hidden="true"></i></a>
+								</li>
+								<li><hr></li>
+					<%if( spaces.length == 0 ){ %> 
+							
+								<li>
+									<small>It seems you dont have any space created.<a href="/space"> Please start with creating a space.</a></small>
+								</li>
+							</ul>
+						</div>
+					<%}else{%>			
 								<%for( var i in spaces ){%> 
 									<li class="parent_li">
-										<span class="fetch_teams" data-fetched="false" data-id="<%= spaces[i]['_id'] %>" data-fetch="teams">
-											<i class="fa fa-folder-open" aria-hidden="true"></i> <%= spaces[i]['space_name'] %>
-										</span> <a href=""><i class="fa fa-cog" aria-hidden="true"></i></a>
+										<span class="fetch_teams" data-fetched="false" data-id="<%= spaces[i]['_id'] %>" data-fetch="teams" data-toggle="tooltip" data-placement="right" title="[ CODE : <%= spaces[i]['space_code'] %> ] <%= spaces[i]['space_desc'] %>">
+											<i class="fa fa-cubes" aria-hidden="true"></i> <%= spaces[i]['space_name'] %>
+										</span> <a href=""> <i class="fa fa-cog" aria-hidden="true"></i></a>
 									</li>
 								<%}%>
 							</ul>
