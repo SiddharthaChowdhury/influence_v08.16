@@ -66,17 +66,29 @@ var teamController = {
 													req.flash('error', err);
 													return res.redirect('/team');
 												}
-											});
-											User.update({_id: ObjectId(req.session.User.uid.toString())},{$push:{teams: team._id}}, function(err){
-												if(err){
-													req.flash('error', err);
-													return res.redirect('/team');
+												else{
+													User.update({_id: ObjectId(req.session.User.uid.toString())},{$push:{teams: team._id}}, function(err){
+														if(err){
+															req.flash('error', err);
+															return res.redirect('/team');
+														}
+														else{
+															Team.findByIdAndUpdate( team._id, {$push: { members: req.session.User.uid}}, function(err){
+																if(err){
+																	console.log(err);
+																	req.flash('joinerror', 'Error! Sorry the joining process has failed. Please try again.');
+																	return res.redirect('/team');
+																}
+																else{
+																	req.session.User.teams.push(team._id);
+																	req.flash('success', 'Success! Team was saved successfully.');
+																	return res.redirect('/team');
+																}
+															});
+														}
+													});
 												}
 											});
-
-											req.session.User.teams.push(team._id);
-											req.flash('success', 'Success! Team was saved successfully.');
-											return res.redirect('/team')
 										}
 									});
 								}
