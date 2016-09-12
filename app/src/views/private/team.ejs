@@ -41,5 +41,37 @@
 			<small><a href="/space"> Please create a space, in where you can create teams.</a></small>
 		<% } %>
 		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<h2>Join a team</h2>
+				<% if(typeof joinerror != 'undefined')  {%>
+					<div class="row text-center">
+						<div class="mike-error"> <%= joinerror %> </div>
+					</div>
+				<% } %>
+				<% if(typeof joinsuccess != 'undefined')  {%>
+					<div class="row text-center">
+						<div class="mike-success"> <%= joinsuccess %> </div>
+					</div>
+				<% } %>
+				<form action="/team/join" method="post">
+					<div class="form-group">
+						<label for="spacecode">Space code: (case sensitive)</label>
+						<input type="text" class="form-control" id="spacecode" name="spacecode" placeholder="Enter space code of the team">
+					</div>
+					<div class="form-group">
+						<label for="spacecode">Team name: (case sensitive)</label>
+						<input type="text" class="form-control" id="teamname" name="teamname" placeholder="Enter team code">
+					</div>
+					<div class="form-group">
+						<a href="#">Find a team?</a><button class="btn btn-default pull-right">Join team</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-md-6">
+				<h2>Your teams</h2>
+				<small>You are not a member of any team it seems.</small>
+			</div>
+		</div>
 	</div>
 <% include ../../partials/dashboard_partials/foot %>

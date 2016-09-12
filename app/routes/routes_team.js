@@ -19,6 +19,10 @@ router.post('/create', function(req, res){
 	Team.create_team(req, res);
 });
 
+router.post('/join', function(req, res){
+	Team.join_team(req, res);
+});
+
 // --------------------------------------------=	ENDS
 
 module.exports = router;

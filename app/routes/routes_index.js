@@ -66,6 +66,7 @@ router.get('/profile', function(req, res) {
 		error: req.flash('error')[0] || undefined, 
 		success: req.flash('success')[0] || undefined
 	}
+	console.log(res_obj);
   	res.render('private/profile', res_obj);
 });
 

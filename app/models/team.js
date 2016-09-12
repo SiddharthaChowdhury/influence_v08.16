@@ -13,7 +13,7 @@ var teamSchemaPrimary = new Schema({
 	},
 	owner_id: String,
 	owner_email: String,
-	members: [], 
+	members: [{type: Schema.ObjectId, ref: 'User'}], 
 	space: {type: Schema.ObjectId, ref: 'Space'},
 	updated_at: Date,
 	created_at: { 
