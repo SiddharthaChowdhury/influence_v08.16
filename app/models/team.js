@@ -11,8 +11,7 @@ var teamSchemaPrimary = new Schema({
 	team_desc: {
 		type: String
 	},
-	owner_id: String,
-	owner_email: String,
+	owner_id: [{type: Schema.ObjectId, ref: 'User'}],
 	members: [{type: Schema.ObjectId, ref: 'User'}], 
 	space: {type: Schema.ObjectId, ref: 'Space'},
 	updated_at: Date,

@@ -54,7 +54,7 @@
 									<li class="parent_li">
 										<span class="fetch_teams" data-fetched="false" data-id="<%= spaces[i]['_id'] %>" data-fetch="teams" data-toggle="tooltip" data-placement="right" title="[ CODE : <%= spaces[i]['space_code'] %> ] <%= spaces[i]['space_desc'] %>">
 											<i class="fa fa-cubes" aria-hidden="true"></i> <%= spaces[i]['space_name'] %>
-										</span> <a href="#" class="prespace-context-cog"> <i class="fa fa-cog" aria-hidden="true"></i></a>
+										</span>
 									</li>
 								<%}%>
 							</ul>
@@ -77,8 +77,8 @@
 					<li class="list-group-item">Markdown</li>
 				</ul>
 			</li>
-			<li class="list-group-item">All pages</li>
-			<!-- <li class="list-group-item">Third item</li> -->
+			<li class="list-group-item">Show members</li>
+			<li class="list-group-item">Show file structure</li>
 		</ul>
 	</div>
 <% include ../../partials/dashboard_partials/foot %>

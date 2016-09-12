@@ -51,8 +51,7 @@ var teamController = {
 									var newTeam = new Team({
 										team_name : req.body.team_name,
 										team_desc : req.body.team_desc,
-										owner_id  : req.session.User.uid,
-										owner_email  : req.session.User.email,
+										// owner_id  : req.session.User.uid,
 										space: ObjectId(space[0]._id)
 									});
 									newTeam.save(function(err, team){
@@ -61,6 +60,8 @@ var teamController = {
 											return res.redirect('/team');
 										}
 										else{
+											newTeam.owner_id.push(ObjectId(req.session.User.uid));
+											newTeam.save();
 											Space.update({space_code: req.body.selected_space},{$push:{teams: team._id}}, function(err){
 												if(err){
 													req.flash('error', err);
