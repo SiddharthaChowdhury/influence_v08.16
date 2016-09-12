@@ -83,7 +83,6 @@ var userController = {
 		Space.find({admin_id : req.session.User.uid}, function(err, spaces){
 			if(err) throw err;
 			else{
-				console.log(spaces)
 				var obj = { 
 						title: 'dashboard | Dockety',
 						user: req.session.User,

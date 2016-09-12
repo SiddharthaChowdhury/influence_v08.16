@@ -170,6 +170,26 @@ a:hover{
 .fetch_teams{
 	cursor: pointer;
 }
+
+/*------------CONTEXT MENU dashboard------------*/
+.context-menu1{
+	background-color: #fff;
+	border:1px solid #c0c0c0;
+	padding: 20px 15px 0px 10px;
+	display:none;
+	box-shadow: 3px 3px 3px #888888;
+}
+.context-menu1>a{
+	position: absolute;
+	top: 1px;
+	right: 6px;
+}
+.context-menu1>ul{
+	float: left;
+	padding-left: 5px !important;
+	display: inline;
+	list-style: none;
+}
 /*-------------------------------------------------*/
 /*------------------ SPACE --------------------*/
 

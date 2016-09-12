@@ -67,33 +67,18 @@
 			</div>
 		</div>
 	</div>
-	<style type="text/css">
-		.context-menu1{
-			background-color: #fff;
-			border:1px solid #c0c0c0;
-			padding: 20px 15px 5px 10px;
-			display:none;
-			box-shadow: 3px 3px 3px #888888;
-		}
-		.context-menu1>a{
-			position: absolute;
-			top: 1px;
-			right: 6px;
-		}
-		.context-menu1>ul{
-			float: left;
-			padding-left: 5px !important;
-			display: inline;
-			list-style: none;
-		}
-	</style>
 	<div class="context-menu1">
 		<a class="close-context-menu" href="javascript:;">x</a>
-		<ul>
-			<li><a href="#">Element 1</a></li>
-			<li><a href="#">Element 2</a></li>
-			<li><a href="#">Element 3</a></li>
-			<li><a href="#">Element 4</a></li>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<a href="#item-1" class="" data-toggle="collapse">New page</a>
+				<ul class="list-group collapse" id="item-1">
+					<li class="list-group-item">WYSIWYG</li>
+					<li class="list-group-item">Markdown</li>
+				</ul>
+			</li>
+			<li class="list-group-item">All pages</li>
+			<!-- <li class="list-group-item">Third item</li> -->
 		</ul>
 	</div>
 <% include ../../partials/dashboard_partials/foot %>
