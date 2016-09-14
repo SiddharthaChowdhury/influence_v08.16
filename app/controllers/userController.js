@@ -4,6 +4,22 @@ var bcrypt = require('bcrypt-nodejs');
 var ObjectId = require('mongoose').Types.ObjectId; 
 
 var userController = {
+
+	getDashboard: function(req, res){
+		Space.find({admin_id : req.session.User.uid}, function(err, spaces){
+			if(err) throw err;
+			else{
+				var obj = { 
+						title: 'dashboard | Dockety',
+						user: req.session.User,
+						spaces: spaces
+					};
+				res.render('private/dashboard', obj);
+				return;
+			}
+		})
+	},
+
 	login: function(req, res){
 		User.find({ email: req.body.email }, function(err, user) {
  			if (err) throw err;
@@ -16,6 +32,7 @@ var userController = {
  							var u = {
 		 						'uid': user[0]._id,
 		 						'email': user[0].email,
+		 						'avatar': user[0].avatar,
 		 						'user_type': user[0].user_type,
 		 						'created_at': user[0].created_at
 		 					};
@@ -30,6 +47,7 @@ var userController = {
 		 					if( typeof user[0].spaces != 'undefined' ) u["spaces"] = user[0].spaces;
 		 					if( typeof user[0].teams != 'undefined' ) u["teams"] = user[0].teams;
 		 					if( typeof user[0].formatted_address != 'undefined' ) u["formatted_address"] = user[0].formatted_address;
+		 					if( typeof user[0].notifications.length > 0 ) u["notifications"] = user[0].notifications;
 		 					req.session.isAuthenticated = true;
 		 					req.session.User = u;
 		 					return res.redirect('/dashboard');
@@ -57,7 +75,8 @@ var userController = {
 		var newUser = new User({
 			email: req.body.email,
 			password: bcrypt.hashSync(req.body.password),
-			user_type: 'admin'
+			user_type: 'admin',
+			avatar: '/images/avatar/'+Math.floor((Math.random() * 8) + 1).toString()+'.png'
 		});
 
 		User.find({ email: newUser.email }, function(err, user) {
@@ -79,45 +98,91 @@ var userController = {
 		});
 	},
 
-	getDashboard: function(req, res){
-		Space.find({admin_id : req.session.User.uid}, function(err, spaces){
-			if(err) throw err;
-			else{
-				var obj = { 
-						title: 'dashboard | Dockety',
-						user: req.session.User,
-						spaces: spaces
-					};
-				res.render('private/dashboard', obj);
-				return;
-			}
-		})
-	},
+	update_profile: function(req, res){
 
-	save_account: function(req, res){
-		var u = { 
-			name: req.body.name,
-			display_name: req.body.d_name,
-			description: req.body.description,
-			phone: req.body.phone,
-			lat: req.body.lat,
-			lng: req.body.lng,
-			city: req.body.city,
-			country: req.body.country,
-			formatted_address: req.body.address
-		}
+		var u = { }
+			if( req.body.name.length != 0 && req.body.name.length < 3)  {
+				req.flash('error', 'Name is too short! Please enter your real name.');
+				return res.redirect('/profile'); 
+			}
+			else
+				u['name'] = req.body.name;
+		
+			if( req.body.d_name.length != 0 && req.body.d_name.length < 3 )  
+			{
+				req.flash('error', "Display name is too short");
+				return res.redirect('/profile'); 
+			}
+			else
+				u['display_name'] = req.body.d_name;
+
+			if(req.body.description.length != 0 && req.body.description.length < 7 ) {
+				req.flash('error', "Description is too short.");
+				return res.redirect('/profile'); 
+			}
+			else
+				u['description'] = req.body.description;
+
+			if(req.body.phone != "" && req.body.phone.length <= 8 ){
+				req.flash('error', "Phone number must be atleast 8 digits long");
+				return res.redirect('/profile');
+			}
+			else
+				u['phone'] = req.body.phone;
+
+			if( req.body.lat != "" && req.body.lat.length < 3 ){
+				req.flash('error', "Invalid address!");
+				return res.redirect('/profile');
+			} 
+			else
+				u['lat'] = req.body.lat;
+
+			if( req.body.lng != "" && req.body.lng.length < 3 ){
+				req.flash('error', "Invalid address!");
+				return res.redirect('/profile');
+			}
+			else
+				u['lng'] = req.body.lng;
+				
+			if( req.body.city != "" && req.body.city.length < 3 )
+			{
+				req.flash('error', "Invalid address!");
+				return res.redirect('/profile');
+			}
+			else
+				u['city'] = req.body.city;
+
+			if( req.body.country != "" && req.body.country.length < 3 )
+			{
+				req.flash('error', "Invalid address!");
+				return res.redirect('/profile');
+			}
+			else
+				 u['country'] = req.body.country ;
+			if( req.body.address != "" && req.body.address.length < 3 )
+			{
+				req.flash('error', "Invalid address!");
+				return res.redirect('/profile');
+			}
+			else
+				 u['formatted_address'] = req.body.address 
+		
 		User.update({ _id: ObjectId(req.session.User.uid.toString()) }, { $set: u}, function(err, usr){
 			if(err) {
 				req.flash('error', err);
 				return res.redirect('/profile');
 			}
 			else{
-				u.email = req.session.User.email;
-				u._id = req.session.User._id;
-				u.user_type = req.session.User.user_type;
-				u.created_at = req.session.User.created_at;
+				// u.email = req.session.User.email;
+				// u._id = req.session.User._id;
+				// u.user_type = req.session.User.user_type;
+				// u.created_at = req.session.User.created_at;
+
+				for( var i in u ){
+					req.session.User[i] = u[i]
+				}
 				
-				req.session.User = u;
+				// req.session.User = u;
 				req.flash('success', 'Profile details saved successfully!');
 				return res.redirect('/profile');
 			}

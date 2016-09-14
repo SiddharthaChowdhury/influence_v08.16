@@ -36,6 +36,7 @@ var userSchemaPrimary = new Schema({
 	phone: {
 		type: Number
 	},
+	avatar: String,
 	notifications : [
 		{
 			msg: String,

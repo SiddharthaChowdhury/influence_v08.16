@@ -41,24 +41,16 @@
 				        <li class="dropdown">
 				         	<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="fa fa-exclamation-circle fa-lg notification" aria-hidden="true"></span></a>
 					        <ul class="dropdown-menu">
-					            <li><a href="/profile"> <i class="fa fa-user" aria-hidden="true"></i> &nbsp;John Doe</a></li>
-					            <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i></i> &nbsp;Account</a></li>
-					            <li><a href="/logout"><i class="fa fa-power-off" aria-hidden="true"></i> &nbsp;Logout</a></li>
-					            <li class="divider"></li>
-					            <li><a href="/dashboard">- &nbsp;Dashboard</a></li>
-					            <li><a href="#">- &nbsp;Team</a></li>
-					        	<li><a href="#">- &nbsp;Picture library</a></li>
-					            <li><a href="#">- &nbsp;FAQs</a></li>
-					            <li><a href="#">- &nbsp;Contact us</a></li>
+					            <li><a href="javascript:;">No notifications yet!</a></li>
 					        </ul>
 				        </li>
 				    </ul>
 				    <!-- Influence option -->
 				    <ul class="nav navbar-nav navbar-right">
 				        <li class="dropdown">
-				         	<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-ellipsis-h fa-lg" aria-hidden="true"></i>&nbsp; <%= typeof user.name == 'undefined' ? user.email : user.name %></a>
+				         	<a class="dropdown-toggle" data-toggle="dropdown" href="#"><img class="top-avatar" src="<%=user.avatar%>" />&nbsp; <%= typeof user.name == 'undefined' ? user.email : user.name %></a>
 					        <ul class="dropdown-menu">
-					            <li><a href="/profile"> <i class="fa fa-user" aria-hidden="true"></i> &nbsp;John Doe</a></li>
+					            <li><a href="/profile"> <i class="fa fa-user" aria-hidden="true"></i> &nbsp;Profile</a></li>
 					            <li><a href="#"><i class="fa fa-cogs" aria-hidden="true"></i></i> &nbsp;Account</a></li>
 					            <li><a href="/logout"><i class="fa fa-power-off" aria-hidden="true"></i> &nbsp;Logout</a></li>
 					            <li class="divider"></li>

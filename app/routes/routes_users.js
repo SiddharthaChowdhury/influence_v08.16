@@ -8,7 +8,7 @@ var Team = require('../controllers/teamController');
 // --------------------------------------------= Routes accessable ONLY after login };
 
 router.post('/profile/save', function(req, res){	// Code checking
-	User.save_account(req, res);
+	User.update_profile(req, res);
 });
 
 router.post('/fetch/async/spaces', function(req, res){	// Get user spaces
