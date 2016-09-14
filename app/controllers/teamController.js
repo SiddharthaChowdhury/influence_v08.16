@@ -159,17 +159,20 @@ var teamController = {
 											}
 											else{
 
-												User.findByIdAndUpdate( ObjectId(req.session.User.uid), {$push: { teams: teams[0]._id}}, function(err){
-													if(err){
-														console.log(err);
-														req.flash('joinerror', 'Error! Sorry the joining process has failed. Please try again.');
-														return res.redirect('/team');
-													}
-													else{
-														req.flash('joinsuccess', 'Success! the joining request has been sent. Soon you get response back from the team admin.');
-														return res.redirect('/team');
-													}
-												}); 
+												// find the admins of this team and add notifications 
+												// later check notifications on admin logins and display them with action accept/ reject
+
+												// User.findByIdAndUpdate( ObjectId(req.session.User.uid), {$push: { teams: teams[0]._id}}, function(err){
+												// 	if(err){
+												// 		console.log(err);
+												// 		req.flash('joinerror', 'Error! Sorry the joining process has failed. Please try again.');
+												// 		return res.redirect('/team');
+												// 	}
+												// 	else{
+												// 		req.flash('joinsuccess', 'Success! the joining request has been sent. Soon you get response back from the team admin.');
+												// 		return res.redirect('/team');
+												// 	}
+												// }); 
 											}
 										}); 
 									}
