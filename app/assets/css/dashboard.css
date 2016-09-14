@@ -171,6 +171,22 @@ a:hover{
 	cursor: pointer;
 }
 
+@keyframes blink {  
+    0% { color: #FA5882; }
+    100% { color: #6E6E6E; }
+}
+@-webkit-keyframes blink {
+    0% { color: #FA5882; }
+    100% { color: #6E6E6E; }
+}
+.notification {
+    -webkit-animation: blink 0.7s linear infinite;
+    -moz-animation: blink 0.7s linear infinite;
+    -ms-animation: blink 0.7s linear infinite;
+    -o-animation: blink 0.7s linear infinite;
+    animation: blink 0.7s linear infinite;
+} 
+
 /*------------CONTEXT MENU dashboard------------*/
 .context-menu1{
 	background-color: #fff;

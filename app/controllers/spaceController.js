@@ -4,6 +4,21 @@ var moment   = require('moment');
 var ObjectId = require('mongoose').Types.ObjectId; 
 
 var spaceController = {
+	get_user_space: function(req, res){
+		Space.find({admin_id: ObjectId(req.session.User.uid)}, function(err, spaces){
+			console.log(spaces);
+			var res_obj = { 
+				title: 'space | Dockety', 
+				error : req.flash('error')[0] || undefined, 
+				success: req.flash('success')[0] || undefined,
+				spaces: spaces,
+				user: req.session.User
+			};
+			console.log(res_obj);
+		  	res.render('private/space', res_obj);
+		});
+	},
+	
 	create_newSpace : function(req, res){
 		if(!req.body.space_name || !req.body.space_description )
 		{
@@ -71,21 +86,6 @@ var spaceController = {
 			});
 		}
 	},
-
-	get_user_space: function(req, res){
-		Space.find({admin_id: ObjectId(req.session.User.uid)}, function(err, spaces){
-			console.log(spaces);
-			var res_obj = { 
-				title: 'space | Dockety', 
-				error : req.flash('error')[0] || undefined, 
-				success: req.flash('success')[0] || undefined,
-				spaces: spaces
-			};
-			console.log(res_obj);
-		  	res.render('private/space', res_obj);
-		});
-	},
-
 	// fetch_async: function(req, res){
 	// 	if(!req.body.uid){
 	// 		res.status(400);

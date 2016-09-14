@@ -36,6 +36,14 @@ var userSchemaPrimary = new Schema({
 	phone: {
 		type: Number
 	},
+	notifications : [
+		{
+			msg: String,
+			response: String,
+			notif_date: Date,
+			ack_date: Date
+		}
+	],
 	password:{
 		type: String
 	},

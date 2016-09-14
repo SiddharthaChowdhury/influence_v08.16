@@ -14,7 +14,8 @@ var teamController = {
 				success: req.flash('success')[0] || undefined,
 				spaces: spaces,
 				joinerror: req.flash('joinerror')[0] || undefined, 
-				joinsuccess: req.flash('joinsuccess')[0] || undefined
+				joinsuccess: req.flash('joinsuccess')[0] || undefined,
+				user: req.session.User
 			};
 			// console.log(res_obj);
 		  	res.render('private/team', res_obj);
