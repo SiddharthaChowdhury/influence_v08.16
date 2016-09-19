@@ -157,7 +157,7 @@ var teamController = {
 											var notif = {
 												subject: 'Joinee',
 												from: req.session.User.uid,
-												msg: req.session.User.email+ " wants to join the team ("+teams[0].team_name+"). Please accept if you know the person.",													
+												msg: '<font color="#848484">'+req.session.User.email+'</font>'+ " wants to join the team ("+'<font color="#848484">'+teams[0].team_name+'</font>'+"). Please accept if you know the person.",													
 												notif_date: new Date,
 												for: "admin"
 											}

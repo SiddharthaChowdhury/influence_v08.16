@@ -22,15 +22,40 @@ var userController = {
 	},
 
 	getNotifications: function(req, res){
-		var notifs = {};
-		notifs["personal"] = typeof req.session.User.notifications == 'undefined' ? null : req.session.User.notifications;
-		if( typeof req.session.User.teams == 'undefined' || req.session.User.teams.length == 0 ){
-			notifs['global'] = null;
-			return notifs;
+
+		if( typeof req.session.User.teams != 'undefined' || req.session.User.teams.length > 0 ){
+			var teams = req.session.User.teams;
+			Team.find({_id:{$in:teams}}, function(err, teams){
+				if(err) throw err;
+				else{
+					var notifs = {
+						personal: [],
+						global: []
+					};
+
+					for(var i in teams){
+						for (var x = 0, len = teams[i].notifications.length; x < len; x++) {
+						  	notifs.global.push(teams[i].notifications[x] );
+						}
+					}
+					if( typeof req.session.User.notifications != 'undefined' ) notifs.personal =  req.session.User.notifications;
+					var obj = { 
+						title: 'dashboard | Notifications',
+						user: req.session.User,
+						notifs: notifs
+					};
+					return res.render('private/notification', obj);
+
+				}
+			});
 		}
 		else{
-			var teams = req.session.User.teams;
-			
+			var obj = { 
+				title: 'dashboard | Notifications',
+				user: req.session.User,
+				notifs: { global : [], personal: []}
+			};
+			return res.render('private/notification', obj);
 		}
 	},
 	

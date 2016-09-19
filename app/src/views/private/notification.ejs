@@ -1,0 +1,17 @@
+<% include ../../partials/dashboard_partials/head %>
+	<div class="container">
+		<h3>Notifications</h3>
+		<div class="col-md-8 col-md-offset-2">
+			<% if( notifs.global.length > 0 ) { %>
+				<% for( var i in notifs.global ) {%>
+					<p>
+						<label><%- notifs.global[i]['msg'] %></label>
+						<div>
+							<small><%= notifs.global[i]['notif_date'] %></small>
+						</div>
+					</p>
+				<% } %>
+			<% } %>
+		</div>
+	</div>
+<% include ../../partials/dashboard_partials/foot %>
