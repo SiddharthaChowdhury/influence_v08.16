@@ -1,4 +1,5 @@
 var User = require('../models/user');
+var Team = require('../models/team');
 var Space    = require('../models/space');
 var bcrypt = require('bcrypt-nodejs');
 var ObjectId = require('mongoose').Types.ObjectId; 
@@ -20,6 +21,19 @@ var userController = {
 		})
 	},
 
+	getNotifications: function(req, res){
+		var notifs = {};
+		notifs["personal"] = typeof req.session.User.notifications == 'undefined' ? null : req.session.User.notifications;
+		if( typeof req.session.User.teams == 'undefined' || req.session.User.teams.length == 0 ){
+			notifs['global'] = null;
+			return notifs;
+		}
+		else{
+			var teams = req.session.User.teams;
+			
+		}
+	},
+	
 	login: function(req, res){
 		User.find({ email: req.body.email }, function(err, user) {
  			if (err) throw err;

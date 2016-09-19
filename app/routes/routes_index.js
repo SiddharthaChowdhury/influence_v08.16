@@ -77,6 +77,10 @@ router.get('/space', function(req, res) {						// Space management page
 router.get('/team', function(req, res){
 	Team.manage_team(req, res);
 });
+
+router.get('/notifications', function(req, res){
+	User.getNotifications(req, res);
+});
 // --------------------------------------------=	ENDS
 
 module.exports = router;

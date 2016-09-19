@@ -39,10 +39,20 @@ var userSchemaPrimary = new Schema({
 	avatar: String,
 	notifications : [
 		{
+			subject: String,
+			from: String,
 			msg: String,
 			response: String,
 			notif_date: Date,
 			ack_date: Date
+		}
+	],
+	activities : [
+		{
+			msg: String,
+			ref_id: String,
+			ref_of:String, 
+			date: Date,
 		}
 	],
 	password:{

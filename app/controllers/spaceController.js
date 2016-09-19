@@ -6,7 +6,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var spaceController = {
 	get_user_space: function(req, res){
 		Space.find({admin_id: ObjectId(req.session.User.uid)}, function(err, spaces){
-			console.log(spaces);
+			// console.log(spaces);
 			var res_obj = { 
 				title: 'space | Dockety', 
 				error : req.flash('error')[0] || undefined, 
@@ -14,7 +14,7 @@ var spaceController = {
 				spaces: spaces,
 				user: req.session.User
 			};
-			console.log(res_obj);
+			// console.log(res_obj);
 		  	res.render('private/space', res_obj);
 		});
 	},
@@ -22,7 +22,7 @@ var spaceController = {
 	create_newSpace : function(req, res){
 		if(!req.body.space_name || !req.body.space_description )
 		{
-			console.log("SPACE: Mantetory fields missing")
+			// console.log("SPACE: Mantetory fields missing")
 			req.flash('error', 'Error! Space name or description cannot be empty.');
 			return res.redirect('/space');
 		}
@@ -47,7 +47,7 @@ var spaceController = {
 								return res.redirect('/team');
 							}
 							else{
-								console.log("Space successfully created");
+								// console.log("Space successfully created");
 								req.session.User.spaces.push(_space._id);
 								req.flash('success', 'Space successfully created');
 		 			  			return res.redirect('/space');
@@ -64,7 +64,7 @@ var spaceController = {
 	},
 
 	check_code: function(req, res){
-		console.log(req.body);
+		// console.log(req.body);
 		if(!req.body.code){
 			res.status(404);
 			res.send("Code not found!");

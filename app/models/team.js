@@ -14,6 +14,20 @@ var teamSchemaPrimary = new Schema({
 	owner_id: [{type: Schema.ObjectId, ref: 'User'}],
 	members: [{type: Schema.ObjectId, ref: 'User'}], 
 	space: {type: Schema.ObjectId, ref: 'Space'},
+	notifications : [
+		{
+			subject: String,
+			from: String,
+			msg: String,
+			response: String,
+			notif_date: Date,
+			ack_date: Date,
+			for:{
+				type: String,
+				enum: ['admin','others']
+			}
+		}
+	],
 	updated_at: Date,
 	created_at: { 
 		type : Date, 

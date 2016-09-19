@@ -2,7 +2,8 @@
 var Team  = require('../models/team');
 var Space = require('../models/space');
 var User  = require('../models/user');
-var ObjectId = require('mongoose').Types.ObjectId; 
+var ObjectId = require('mongoose').Types.ObjectId;
+var moment = require('moment'); 
 
 var teamController = {
 	manage_team: function(req, res){
@@ -150,34 +151,55 @@ var teamController = {
 							else{
 								if(teams.length == 1 ){
 
-									if(teams[0].members.indexOf(req.session.User.uid) == -1 ){
-										Team.findByIdAndUpdate( teams[0]._id, {$push: { members: req.session.User.uid}}, function(err){
-											if(err){
-												console.log(err);
-												req.flash('joinerror', 'Error! Sorry the joining process has failed. Please try again.');
-												return res.redirect('/team');
+									if(teams[0].members.indexOf(req.session.User.uid) == -1){
+										if(preRequest_check(teams[0]))
+										{
+											var notif = {
+												subject: 'Joinee',
+												from: req.session.User.uid,
+												msg: req.session.User.email+ " wants to join the team ("+teams[0].team_name+"). Please accept if you know the person.",													
+												notif_date: new Date,
+												for: "admin"
 											}
-											else{
-
-												// find the admins of this team and add notifications 
-												// later check notifications on admin logins and display them with action accept/ reject
-
-												// User.findByIdAndUpdate( ObjectId(req.session.User.uid), {$push: { teams: teams[0]._id}}, function(err){
-												// 	if(err){
-												// 		console.log(err);
-												// 		req.flash('joinerror', 'Error! Sorry the joining process has failed. Please try again.');
-												// 		return res.redirect('/team');
-												// 	}
-												// 	else{
-												// 		req.flash('joinsuccess', 'Success! the joining request has been sent. Soon you get response back from the team admin.');
-												// 		return res.redirect('/team');
-												// 	}
-												// }); 
-											}
-										}); 
+											Team.findByIdAndUpdate( teams[0]._id, {$push: { notifications: notif}}, function(err){			
+												if(err){
+													console.log(err);
+													req.flash('joinerror', 'Error! Sorry the joining process has failed. Please try again.');
+													return res.redirect('/team');
+												}
+												else{
+													req.flash('joinsuccess', 'Great! A joining request has been sent to the admin/s. Please wait for him/them to respond.');
+													return res.redirect('/team');
+												}
+											});
+										}
+										else{
+											req.flash('joinerror', 'Hey! Your request is already sent. Please wait for the team admin to respond.');
+											return res.redirect('/team')
+										}
+										// Team.findByIdAndUpdate( teams[0]._id, {$push: { members: req.session.User.uid}}, function(err){
+											// if(err){
+											// 	console.log(err);
+											// 	req.flash('joinerror', 'Error! Sorry the joining process has failed. Please try again.');
+											// 	return res.redirect('/team');
+											// }
+										// 	else{
+										// 		User.findByIdAndUpdate( ObjectId(req.session.User.uid), {$push: { teams: teams[0]._id}}, function(err){
+										// 			if(err){
+										// 				console.log(err);
+										// 				req.flash('joinerror', 'Error! Sorry the joining process has failed. Please try again.');
+										// 				return res.redirect('/team');
+										// 			}
+										// 			else{
+														// req.flash('joinsuccess', 'Success! the joining request has been sent. Soon you get response back from the team admin.');
+														// return res.redirect('/team');
+										// 			}
+										// 		}); 
+										// 	}
+										// }); 
 									}
 									else{
-										req.flash('joinerror', 'Error! Sorry You already are a member of the team.');
+										req.flash('joinerror', 'Hey! It seems you are already a member of the team.');
 										return res.redirect('/team')
 									}
 								}
@@ -193,6 +215,16 @@ var teamController = {
 					}
 				}
 			})
+		}
+		function preRequest_check(team){
+			var flag = true;
+			for ( var i in team.notifications ){
+				if( team.notifications[i].subject == 'Joinee' && team.notifications[i].from == req.session.User.uid ){
+					flag = false;
+					break;
+				}
+			}
+			return flag
 		}
 	},
 }
