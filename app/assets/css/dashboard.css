@@ -235,3 +235,15 @@ a:hover{
 #map-canvas{
 	height: 500px;
 }
+
+/*-----------------------------------------------------*/
+/*------------------ NOTIFICATIONS --------------------*/
+.each_notification{
+	padding: 15px 17px;
+	margin-bottom: 15px;
+	background-color: #F2F2F2;
+}
+.each_notification_message{
+	padding: 20px 15px;
+	background-color: #fff;
+}

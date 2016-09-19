@@ -4,12 +4,23 @@
 		<div class="col-md-8 col-md-offset-2">
 			<% if( notifs.global.length > 0 ) { %>
 				<% for( var i in notifs.global ) {%>
-					<p>
-						<label><%- notifs.global[i]['msg'] %></label>
+					<div class="each_notification row">
 						<div>
-							<small><%= notifs.global[i]['notif_date'] %></small>
+							<small class="pull-right"><%= notifs.global[i]['notif_date'] %></small><hr>
+							<h4 class="each_notification_message"><%- notifs.global[i]['msg'] %></h4>
+							<small class="col-md-9">
+								<div>
+									<span>Type: </span><label> <%= notifs.global[i]['for'] == 'admin'? 'Team administration': 'Personal' %></label>
+								</div>
+								<div>
+									<span>State: </span><label> <%= (notifs.global[i]['response'] == '' || typeof notifs.global[i]['response'] == 'undefined' )? 'Not handled': notifs.global[i]['response'] %></label>
+								</div>
+							</small>
+							<div class="col-md-3 text-right">
+								<a href="#" class="btn btn-default">Accept</a> &nbsp; <a href="#" class="btn btn-default">Reject</a>
+							</div>
 						</div>
-					</p>
+					</div>
 				<% } %>
 			<% } %>
 		</div>

@@ -45,7 +45,6 @@ var userController = {
 						notifs: notifs
 					};
 					return res.render('private/notification', obj);
-
 				}
 			});
 		}
