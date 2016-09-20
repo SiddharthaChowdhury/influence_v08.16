@@ -17,7 +17,7 @@ var teamSchemaPrimary = new Schema({
 	notifications : [
 		{
 			subject: String,
-			from: String,
+			data: {},
 			msg: String,
 			response: String,
 			notif_date: Date,

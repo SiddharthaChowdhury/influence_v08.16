@@ -1,5 +1,5 @@
 <% include ../../partials/dashboard_partials/head %>
-	<div class="container">
+	<div class="container" id="notification_view">
 		<h3>Notifications</h3>
 		<div class="col-md-8 col-md-offset-2">
 			<% if( notifs.global.length > 0 ) { %>
@@ -17,11 +17,14 @@
 								</div>
 							</small>
 							<div class="col-md-3 text-right">
-								<a href="#" class="btn btn-default">Accept</a> &nbsp; <a href="#" class="btn btn-default">Reject</a>
+								<a href="#" class="btn btn-default jq_accept_joining" data-uid="<%= notifs.global[i]['data']['uid'] %>" data-tid="<%= notifs.global[i]['data']['tid'] %>" >Accept</a> &nbsp; 
+								<a href="#" class="btn btn-default jq_reject_joining" data-uid="<%= notifs.global[i]['data']['uid'] %>" data-tid="<%= notifs.global[i]['data']['tid'] %>">Reject</a>
 							</div>
 						</div>
 					</div>
 				<% } %>
+			<% } else { %>
+				<div>No new notifications yet!</div>
 			<% } %>
 		</div>
 	</div>

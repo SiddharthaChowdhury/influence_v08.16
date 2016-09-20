@@ -23,6 +23,11 @@ router.post('/join', function(req, res){
 	Team.join_team(req, res);
 });
 
+router.post('/accept/joining', function(req, res){
+	Team.join_team_accepted(req, res);
+});
+
+
 // --------------------------------------------=	ENDS
 
 module.exports = router;

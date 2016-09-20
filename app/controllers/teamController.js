@@ -156,7 +156,10 @@ var teamController = {
 										{
 											var notif = {
 												subject: 'Joinee',
-												from: req.session.User.uid,
+												data: {
+													uid:req.session.User.uid.toString(),
+													tid: teams[0]._id.toString(),
+												},
 												msg: '<font color="#848484">'+req.session.User.email+'</font>'+ " wants to join the team ("+'<font color="#848484">'+teams[0].team_name+'</font>'+"). Please accept if you know the person.",													
 												notif_date: new Date,
 												for: "admin"
@@ -177,26 +180,6 @@ var teamController = {
 											req.flash('joinerror', 'Hey! Your request is already sent. Please wait for the team admin to respond.');
 											return res.redirect('/team')
 										}
-										// Team.findByIdAndUpdate( teams[0]._id, {$push: { members: req.session.User.uid}}, function(err){
-											// if(err){
-											// 	console.log(err);
-											// 	req.flash('joinerror', 'Error! Sorry the joining process has failed. Please try again.');
-											// 	return res.redirect('/team');
-											// }
-										// 	else{
-										// 		User.findByIdAndUpdate( ObjectId(req.session.User.uid), {$push: { teams: teams[0]._id}}, function(err){
-										// 			if(err){
-										// 				console.log(err);
-										// 				req.flash('joinerror', 'Error! Sorry the joining process has failed. Please try again.');
-										// 				return res.redirect('/team');
-										// 			}
-										// 			else{
-														// req.flash('joinsuccess', 'Success! the joining request has been sent. Soon you get response back from the team admin.');
-														// return res.redirect('/team');
-										// 			}
-										// 		}); 
-										// 	}
-										// }); 
 									}
 									else{
 										req.flash('joinerror', 'Hey! It seems you are already a member of the team.');
@@ -219,7 +202,7 @@ var teamController = {
 		function preRequest_check(team){
 			var flag = true;
 			for ( var i in team.notifications ){
-				if( team.notifications[i].subject == 'Joinee' && team.notifications[i].from == req.session.User.uid ){
+				if( team.notifications[i].subject == 'Joinee' && team.notifications[i].data.uid == req.session.User.uid ){
 					flag = false;
 					break;
 				}
@@ -227,5 +210,34 @@ var teamController = {
 			return flag
 		}
 	},
+
+	join_team_accepted: function(req, res){
+		if(!req.body.uid || !req.body.tid){
+			res.status(400);
+			return res.send("Error! Internal error occured!.");
+		}
+		else{
+
+			Team.findByIdAndUpdate( ObjectId(req.body.tid), {$push: { members: req.body.uid}}, function(err){
+				if(err){
+					res.status(400);
+					return res.send('Error! Sorry the joining process has failed. Please try again.');
+				}
+				else{
+					User.findByIdAndUpdate( ObjectId(req.body.uid), {$push: { teams: req.body.tid}}, function(err){
+						if(err){
+							res.status(400);
+							return res.send('Error! Sorry the joining process has failed. Please try again.');
+						}
+						else{
+							res.status(200);
+							return res.send('Success! Member joining accepted.');
+						}
+					}); 
+				}
+			});
+		}
+	},
+
 }
 module.exports = teamController;
