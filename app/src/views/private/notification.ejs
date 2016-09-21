@@ -16,10 +16,16 @@
 									<span>State: </span><label> <%= (notifs.global[i]['response'] == '' || typeof notifs.global[i]['response'] == 'undefined' )? 'Not handled': notifs.global[i]['response'] %></label>
 								</div>
 							</small>
-							<div class="col-md-3 text-right">
-								<a href="#" class="btn btn-default jq_accept_joining" data-uid="<%= notifs.global[i]['data']['uid'] %>" data-tid="<%= notifs.global[i]['data']['tid'] %>" >Accept</a> &nbsp; 
-								<a href="#" class="btn btn-default jq_reject_joining" data-uid="<%= notifs.global[i]['data']['uid'] %>" data-tid="<%= notifs.global[i]['data']['tid'] %>">Reject</a>
-							</div>
+							<% if (notifs.global[i]['response'] == '' || typeof notifs.global[i]['response'] == 'undefined') { %>
+								<div class="col-md-3 text-right">
+									<a href="#" class="btn btn-default jq_accept_joining" data-nid="<%= notifs.global[i]['_id'] %>" data-uid="<%= notifs.global[i]['data']['uid'] %>" data-tid="<%= notifs.global[i]['data']['tid'] %>" >Accept</a> &nbsp; 
+									<a href="#" class="btn btn-default jq_reject_joining" data-nid="<%= notifs.global[i]['_id'] %>" data-uid="<%= notifs.global[i]['data']['uid'] %>" data-tid="<%= notifs.global[i]['data']['tid'] %>">Reject</a>
+								</div>
+							<% } else {%>
+								<div class="col-md-3 text-right">
+									<strong>Notification handled.</strong>
+								</div>
+							<% } %>
 						</div>
 					</div>
 				<% } %>

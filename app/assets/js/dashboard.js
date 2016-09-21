@@ -192,22 +192,21 @@ $(function(){
 			e.preventDefault();
 			var obj = {
 				uid: $(this).attr('data-uid'),
-				tid: $(this).attr('data-tid')
+				tid: $(this).attr('data-tid'),
+				nid: $(this).attr('data-nid')
 			}
 			$.ajax({
 				method: "POST",
 				url: "/team/accept/joining",
 				data: obj,
 				statusCode:{
-					400: function(resp){
-						// $('.code_msg').attr('color','#DF013A');
-						// $('.code_msg').html('&nbsp;<i class="fa fa-times" aria-hidden="true"></i> CODE is available');
-						console.log(resp)
-					},
+					// 400: function(resp){
+					// 	// $('.code_msg').attr('color','#DF013A');
+					// 	// $('.code_msg').html('&nbsp;<i class="fa fa-times" aria-hidden="true"></i> CODE is available');
+					// 	console.log(resp)
+					// },
 					200: function(resp){
-						// $('.code_msg').attr('color','#04B431');
-			  	// 		$('.code_msg').html('&nbsp;<i class="fa fa-check" aria-hidden="true"></i> CODE is unique');
-			  			console.log(resp)
+						location.reload();
 					}
 				}
 			});

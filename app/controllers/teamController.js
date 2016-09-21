@@ -230,8 +230,39 @@ var teamController = {
 							return res.send('Error! Sorry the joining process has failed. Please try again.');
 						}
 						else{
-							res.status(200);
-							return res.send('Success! Member joining accepted.');
+							Team.find({"notifications._id" : ObjectId(req.body.nid)}, function(err, team){
+								if(err){
+									res.status(400);
+									return res.send('Error! Sorry the joining process has failed. Please try again.');
+								}
+								else{
+									
+									var notif;
+									for(var i in team[0].notifications){
+										if( team[0].notifications[i]._id == req.body.nid ){
+											notif = team[0].notifications[i];
+											break;
+										}
+									}
+									notif['response'] = req.session.User.email+" has accepted the request.";
+									notif['ack_date'] = new Date;
+
+									Team.findOneAndUpdate({"notifications._id" : ObjectId(req.body.nid)},
+										{ "$set": {
+											"notifications.$": 	notif
+										}}, function(err){
+											if(err){
+												res.status(400);
+												return res.send('Error! Sorry the joining process has failed. Please try again.');
+											}
+											else{
+												res.status(200);
+												return res.send('Success! Member\'s joining accepted.');
+											}
+										}
+									);
+								}
+							});	 
 						}
 					}); 
 				}
